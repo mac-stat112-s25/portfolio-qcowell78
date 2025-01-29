@@ -107,5 +107,93 @@
       "In-class Activities",
       "<span class='chapter-number'>9</span>  <span class='chapter-title'>Spatial Viz</span>"
     ]
+  },
+  {
+    "objectID": "ica/quarto-demo.html",
+    "href": "ica/quarto-demo.html",
+    "title": "10  My first Quarto document",
+    "section": "",
+    "text": "10.1 Intro\nMacalester College is in the Twin Cities. It has:\nCheck it out for yourself:",
+    "crumbs": [
+      "In-class Activities",
+      "<span class='chapter-number'>10</span>  <span class='chapter-title'>My first Quarto document</span>"
+    ]
+  },
+  {
+    "objectID": "ica/quarto-demo.html#intro",
+    "href": "ica/quarto-demo.html#intro",
+    "title": "10  My first Quarto document",
+    "section": "",
+    "text": "four seasons\nbagpipes\ndelightful students",
+    "crumbs": [
+      "In-class Activities",
+      "<span class='chapter-number'>10</span>  <span class='chapter-title'>My first Quarto document</span>"
+    ]
+  },
+  {
+    "objectID": "ica/quarto-demo.html#exercise-1-deduce-quarto-features",
+    "href": "ica/quarto-demo.html#exercise-1-deduce-quarto-features",
+    "title": "10  My first Quarto document",
+    "section": "10.2 Exercise 1: Deduce Quarto features",
+    "text": "10.2 Exercise 1: Deduce Quarto features\nCheck out the appearance and contents of this document. Thoughts?\nIn the toolbar at the top of this document, Render the .qmd file into a .html file. Where is this file stored? Thoughts about its appearance / contents? Can you edit it?\nToggling between the .qmd and .html files, explain the purpose of the following features in the .qmd file:\n* A single asterisk on each side of a phrase italicizes that phrase.\n** Two asterisks on each side of a phrase bold that phrase.\n# A double hashtag inroduces a section heading, and a single hashtag is used for notes.\n- A hyphen creates a bulleted list.\n\\ No backslashes in document.\n![](url) This phrase allows the image to load.",
+    "crumbs": [
+      "In-class Activities",
+      "<span class='chapter-number'>10</span>  <span class='chapter-title'>My first Quarto document</span>"
+    ]
+  },
+  {
+    "objectID": "ica/quarto-demo.html#exercise-2-code",
+    "href": "ica/quarto-demo.html#exercise-2-code",
+    "title": "10  My first Quarto document",
+    "section": "10.3 Exercise 2: Code",
+    "text": "10.3 Exercise 2: Code\nHow does this appear in the .qmd? The .html? So…?!\nseq(from = 100, to = 1000, by = 50)\nThis does not function as a string of code on the webpage, but rather is only text.",
+    "crumbs": [
+      "In-class Activities",
+      "<span class='chapter-number'>10</span>  <span class='chapter-title'>My first Quarto document</span>"
+    ]
+  },
+  {
+    "objectID": "ica/quarto-demo.html#exercise-3-chunks",
+    "href": "ica/quarto-demo.html#exercise-3-chunks",
+    "title": "10  My first Quarto document",
+    "section": "10.4 Exercise 3: Chunks",
+    "text": "10.4 Exercise 3: Chunks\nQuarto isn’t a mind reader – we must distinguish R code from text. We do so by putting code inside an R chunk:\n\nseq(from = 100, to = 1000, by = 50)\n\n [1]  100  150  200  250  300  350  400  450  500  550  600  650  700  750  800\n[16]  850  900  950 1000\n\n\n\nPut the seq() code in the chunk.\nPress the green arrow in the top right of the chunk. What happens in the qmd?\nRender. What appears in the html: R code, output, or both?\n\nThe code shows up as a separate font and color, and also gives an output from the code.",
+    "crumbs": [
+      "In-class Activities",
+      "<span class='chapter-number'>10</span>  <span class='chapter-title'>My first Quarto document</span>"
+    ]
+  },
+  {
+    "objectID": "ica/quarto-demo.html#exercise-4-practice",
+    "href": "ica/quarto-demo.html#exercise-4-practice",
+    "title": "10  My first Quarto document",
+    "section": "10.5 Exercise 4: Practice",
+    "text": "10.5 Exercise 4: Practice\n\nUse R code to create the following sequence: 10 10 10 10\nStore the sequence as four_tens.\nUse an R function (which we haven’t learned!) to add up the numbers in four_tens.\n\n\nfour_tens &lt;- rep(10,4)\nsum(four_tens, na.rm = FALSE)\n\n[1] 40",
+    "crumbs": [
+      "In-class Activities",
+      "<span class='chapter-number'>10</span>  <span class='chapter-title'>My first Quarto document</span>"
+    ]
+  },
+  {
+    "objectID": "ica/quarto-demo.html#exercise-5-fix-this-code",
+    "href": "ica/quarto-demo.html#exercise-5-fix-this-code",
+    "title": "10  My first Quarto document",
+    "section": "10.6 Exercise 5: Fix this code",
+    "text": "10.6 Exercise 5: Fix this code\nCode is a form of communication, and the code below doesn’t cut it.\nPut the code in a chunk and fix it.\nRep(x = 1, times = 10) seq(from=100,to=1000,length=20) theNumberofStudentsinthisclass&lt;-27\n\nrep(1, 10)\n\n [1] 1 1 1 1 1 1 1 1 1 1\n\nseq(100, 1000, 20)\n\n [1]  100  120  140  160  180  200  220  240  260  280  300  320  340  360  380\n[16]  400  420  440  460  480  500  520  540  560  580  600  620  640  660  680\n[31]  700  720  740  760  780  800  820  840  860  880  900  920  940  960  980\n[46] 1000\n\nnumber_students &lt;- 27",
+    "crumbs": [
+      "In-class Activities",
+      "<span class='chapter-number'>10</span>  <span class='chapter-title'>My first Quarto document</span>"
+    ]
+  },
+  {
+    "objectID": "ica/quarto-demo.html#exercise-6-comments",
+    "href": "ica/quarto-demo.html#exercise-6-comments",
+    "title": "10  My first Quarto document",
+    "section": "10.7 Exercise 6: Comments",
+    "text": "10.7 Exercise 6: Comments\nRun the chunk below. Notice that R ignores anything in a line starting with a pound sign (#). If we took the # away we’d get an error!\n\n# This is a comment\n4 + 5\n\n[1] 9\n\n\nWe’ll utilize this feature to comment our code, i.e. leave short notes about what our code is doing. Below, replace the ??? with an appropriate comment.\n\n# converting Celsius to Fahrenheit\ntemperature_c &lt;- 10\ntemperature_f &lt;- temperature_c * 9/5 + 32\ntemperature_f\n\n[1] 50",
+    "crumbs": [
+      "In-class Activities",
+      "<span class='chapter-number'>10</span>  <span class='chapter-title'>My first Quarto document</span>"
+    ]
   }
 ]
