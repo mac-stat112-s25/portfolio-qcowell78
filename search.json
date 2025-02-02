@@ -67,9 +67,163 @@
   {
     "objectID": "ica/ica-uni.html",
     "href": "ica/ica-uni.html",
-    "title": "6  Univariate Viz",
+    "title": "Univariate Viz",
     "section": "",
-    "text": "Use this file for practice with the univariate viz in-class activity. Refer to the class website for details.",
+    "text": "Exercise 1: Research Questions\n# Import data\nhikes &lt;- read.csv(\"https://mac-stat.github.io/data/high_peaks.csv\")\nhead(hikes)\n\n             peak elevation difficulty ascent length time    rating\n1     Mt. Marcy        5344          5   3166   14.8 10.0  moderate\n2 Algonquin Peak       5114          5   2936    9.6  9.0  moderate\n3   Mt. Haystack       4960          7   3570   17.8 12.0 difficult\n4   Mt. Skylight       4926          7   4265   17.9 15.0 difficult\n5 Whiteface Mtn.       4867          4   2535   10.4  8.5      easy\n6       Dix Mtn.       4857          5   2800   13.2 10.0  moderate",
+    "crumbs": [
+      "In-class Activities",
+      "<span class='chapter-number'>6</span>  <span class='chapter-title'>Univariate Viz</span>"
+    ]
+  },
+  {
+    "objectID": "ica/ica-uni.html#exercise-1-research-questions",
+    "href": "ica/ica-uni.html#exercise-1-research-questions",
+    "title": "Univariate Viz",
+    "section": "",
+    "text": "A visualization of the categorical rating variable of the hikes should include distinguishing visual elements for each category, such as a color scheme differentiated by hue. The rating of each trail can be displayed in a color-coded table.\nA visualization of the quantitative elevation variable could include visuals of each peak in order of height, or a more simplistic bar graph in which the y-axis is elevation and the x-axis is each peak.",
+    "crumbs": [
+      "In-class Activities",
+      "<span class='chapter-number'>6</span>  <span class='chapter-title'>Univariate Viz</span>"
+    ]
+  },
+  {
+    "objectID": "ica/ica-uni.html#exercise-2-load-tidyverse",
+    "href": "ica/ica-uni.html#exercise-2-load-tidyverse",
+    "title": "Univariate Viz",
+    "section": "Exercise 2: Load tidyverse",
+    "text": "Exercise 2: Load tidyverse\n\n# Use the ggplot function\nggplot(hikes, aes(x = rating))\n\n\n\n\n\n\n\n# An error message appears\n\nThe package must be loaded.\n\n# Load the package\nlibrary(tidyverse)",
+    "crumbs": [
+      "In-class Activities",
+      "<span class='chapter-number'>6</span>  <span class='chapter-title'>Univariate Viz</span>"
+    ]
+  },
+  {
+    "objectID": "ica/ica-uni.html#exercise-3-bar-chart-of-ratings---part-1",
+    "href": "ica/ica-uni.html#exercise-3-bar-chart-of-ratings---part-1",
+    "title": "Univariate Viz",
+    "section": "Exercise 3: Bar Chart of Ratings - Part 1",
+    "text": "Exercise 3: Bar Chart of Ratings - Part 1\n\n# Set up plotting frame to chart hike rating\nggplot(hikes, aes(x = rating))",
+    "crumbs": [
+      "In-class Activities",
+      "<span class='chapter-number'>6</span>  <span class='chapter-title'>Univariate Viz</span>"
+    ]
+  },
+  {
+    "objectID": "ica/ica-uni.html#exercise-4-bar-chart-of-ratings---part-2",
+    "href": "ica/ica-uni.html#exercise-4-bar-chart-of-ratings---part-2",
+    "title": "Univariate Viz",
+    "section": "Exercise 4: Bar Chart of Ratings - Part 2",
+    "text": "Exercise 4: Bar Chart of Ratings - Part 2\nAdding geometric layer and customizing plot theme.\n\n# Adding geom_bar() to ggplot() function. Adds gray bars to plot ordered by number of hikes per category. Background is grey with white lines\nggplot(hikes, aes(x = rating)) +\n  geom_bar()\n\n\n\n\n\n\n\n\n\n# Adding function labs() to previous functions. Adds labels to axes.\nggplot(hikes, aes(x = rating)) +\n  geom_bar() +\n  labs(x = \"Rating\", y = \"Number of hikes\")\n\n\n\n\n\n\n\n\n\n# Adding \"fill\" command to geom_bar() function. Changes bar color to blue \nggplot(hikes, aes(x = rating)) +\n  geom_bar(fill = \"blue\") +\n  labs(x = \"Rating\", y = \"Number of hikes\")\n\n\n\n\n\n\n\n\n\n# Adding command \"color\" to geom_bar() function. Adds an orange outline to blue bars.\nggplot(hikes, aes(x = rating)) +\n  geom_bar(color = \"orange\", fill = \"blue\") +\n  labs(x = \"Rating\", y = \"Number of hikes\")\n\n\n\n\n\n\n\n\n\n# Adding function theme_minimal. This makes the chart background white with grey lines.\nggplot(hikes, aes(x = rating)) +\n  geom_bar(color = \"orange\", fill = \"blue\")  +\n  labs(x = \"Rating\", y = \"Number of hikes\") +\n  theme_minimal()",
+    "crumbs": [
+      "In-class Activities",
+      "<span class='chapter-number'>6</span>  <span class='chapter-title'>Univariate Viz</span>"
+    ]
+  },
+  {
+    "objectID": "ica/ica-uni.html#exercise-5-bar-chart-follow-up",
+    "href": "ica/ica-uni.html#exercise-5-bar-chart-follow-up",
+    "title": "Univariate Viz",
+    "section": "Exercise 5: Bar Chart Follow-up",
+    "text": "Exercise 5: Bar Chart Follow-up\n\nPart A\n\n+ is used by ggplot() to string together different functions required to create plots in R.\nThe “geom” in geom_bar() indicates that the function is defining the type of visualization being used for the data.\nlabs() stands for “labels.”\ncolor colors the border of the bar, while fill colors the full bar.\n\n\n\nPart B\nMost hikes in the Adirondacks are of moderate difficulty.\n\n\nPart C\nI don’t like that the difficutly levels are not in a logical ordering; ordering them by difficulty makes them more logical than by bar height.",
+    "crumbs": [
+      "In-class Activities",
+      "<span class='chapter-number'>6</span>  <span class='chapter-title'>Univariate Viz</span>"
+    ]
+  },
+  {
+    "objectID": "ica/ica-uni.html#exercise-6-sad-bar-chart",
+    "href": "ica/ica-uni.html#exercise-6-sad-bar-chart",
+    "title": "Univariate Viz",
+    "section": "Exercise 6: Sad Bar Chart",
+    "text": "Exercise 6: Sad Bar Chart\n\n# Construct bar chart of the quantitative elevation variable\nggplot(hikes, aes(x = elevation)) +\n  geom_bar()\n\n\n\n\n\n\n\n\nThis is not an effective visualization for this variable. The bars are hard to read, and due to the continuous nature of the elevation variable, the chart doesn’t effectively communicate the distribution of hike elevations.",
+    "crumbs": [
+      "In-class Activities",
+      "<span class='chapter-number'>6</span>  <span class='chapter-title'>Univariate Viz</span>"
+    ]
+  },
+  {
+    "objectID": "ica/ica-uni.html#exercise-7-a-histogram-of-elevation",
+    "href": "ica/ica-uni.html#exercise-7-a-histogram-of-elevation",
+    "title": "Univariate Viz",
+    "section": "Exercise 7: A Histogram of Elevation",
+    "text": "Exercise 7: A Histogram of Elevation\nHistograms are constructed by (1) dividing up the observed range of the variable into ‘bins’ of equal width; and (2) counting up the number of cases that fall into each bin. Compared to bar graphs, this allows for better visualization of rather disparate data where many different values exist.",
+    "crumbs": [
+      "In-class Activities",
+      "<span class='chapter-number'>6</span>  <span class='chapter-title'>Univariate Viz</span>"
+    ]
+  },
+  {
+    "objectID": "ica/ica-uni.html#exercise-8-building-histograms---part-1",
+    "href": "ica/ica-uni.html#exercise-8-building-histograms---part-1",
+    "title": "Univariate Viz",
+    "section": "Exercise 8: Building Histograms - Part 1",
+    "text": "Exercise 8: Building Histograms - Part 1\nggplot(hikes, aes(x = elevation)) will probably be followed by a line with the function geom_hist() or something like that",
+    "crumbs": [
+      "In-class Activities",
+      "<span class='chapter-number'>6</span>  <span class='chapter-title'>Univariate Viz</span>"
+    ]
+  },
+  {
+    "objectID": "ica/ica-uni.html#exercise-9-building-histograms---part-2",
+    "href": "ica/ica-uni.html#exercise-9-building-histograms---part-2",
+    "title": "Univariate Viz",
+    "section": "Exercise 9: Building Histograms - Part 2",
+    "text": "Exercise 9: Building Histograms - Part 2\n\n# Adding function geom_histogram() creates a histogram, although an error message appears suggesting different bin width.\nggplot(hikes, aes(x = elevation)) +\n  geom_histogram()\n\n`stat_bin()` using `bins = 30`. Pick better value with `binwidth`.\n\n\n\n\n\n\n\n\n\n\n# Adding \"color\" command to geom_histogram again adds outlines to each bin\nggplot(hikes, aes(x = elevation)) +\n  geom_histogram(color = \"white\")\n\n`stat_bin()` using `bins = 30`. Pick better value with `binwidth`.\n\n\n\n\n\n\n\n\n\n\n# \"Fill\" changes the colors of the bins to blue.\nggplot(hikes, aes(x = elevation)) +\n  geom_histogram(color = \"white\", fill = \"blue\") \n\n`stat_bin()` using `bins = 30`. Pick better value with `binwidth`.\n\n\n\n\n\n\n\n\n\n\n# labs(x =, y =) adds labels.\nggplot(hikes, aes(x = elevation)) +\n  geom_histogram(color = \"white\") +\n  labs(x = \"Elevation (feet)\", y = \"Number of hikes\")\n\n`stat_bin()` using `bins = 30`. Pick better value with `binwidth`.\n\n\n\n\n\n\n\n\n\n\n# \"binwidth\" assigns a value to the bin size, in this case 1000 feet, which is too wide to be helpful.\nggplot(hikes, aes(x = elevation)) +\n  geom_histogram(color = \"white\", binwidth = 1000) +\n  labs(x = \"Elevation (feet)\", y = \"Number of hikes\")\n\n\n\n\n\n\n\n\n\n# This makes the bin width 5 feet. Bins are now too narrow to read or to show any patterns in the data.\nggplot(hikes, aes(x = elevation)) +\n  geom_histogram(color = \"white\", binwidth = 5) +\n  labs(x = \"Elevation (feet)\", y = \"Number of hikes\")\n\n\n\n\n\n\n\n\n\n# This makes the bin width 200 feet. This is much more readable while still showing variations in data.\nggplot(hikes, aes(x = elevation)) +\n  geom_histogram(color = \"white\", binwidth = 200) +\n  labs(x = \"Elevation (feet)\", y = \"Number of hikes\")",
+    "crumbs": [
+      "In-class Activities",
+      "<span class='chapter-number'>6</span>  <span class='chapter-title'>Univariate Viz</span>"
+    ]
+  },
+  {
+    "objectID": "ica/ica-uni.html#exercise-10-histogram-follow-up",
+    "href": "ica/ica-uni.html#exercise-10-histogram-follow-up",
+    "title": "Univariate Viz",
+    "section": "Exercise 10: Histogram Follow-up",
+    "text": "Exercise 10: Histogram Follow-up\n\ngeom_histogram adds the histogram geometry.\ncolor and fill have the same function as with the bar graphs, but color here helps make the histogram more readable by distinguishing each bin.\nbinwidth is also an important part or readability. In this case, 9 bins (200 feet per bin) were most effective.",
+    "crumbs": [
+      "In-class Activities",
+      "<span class='chapter-number'>6</span>  <span class='chapter-title'>Univariate Viz</span>"
+    ]
+  },
+  {
+    "objectID": "ica/ica-uni.html#exercise-11-density-plots",
+    "href": "ica/ica-uni.html#exercise-11-density-plots",
+    "title": "Univariate Viz",
+    "section": "Exercise 11: Density Plots",
+    "text": "Exercise 11: Density Plots\nDensity plots are essentially smooth versions of the histogram. Instead of sorting observations into discrete bins, the “density” of observations is calculated across the entire range of outcomes. The greater the number of observations, the greater the density! The density is then scaled so that the area under the density curve always equals 1 and the area under any fraction of the curve represents the fraction of cases that lie in that range.\n\nggplot(hikes, aes(x = elevation)) +\n  geom_density()\n\n\n\n\n\n\n\n\n\n# testing \"color\" with respect to density plots\nggplot(hikes, aes(x = elevation)) +\n  geom_density(color = \"pink\")\n\n\n\n\n\n\n\n\n\n# testing \"fill\" with respect to density plots\nggplot(hikes, aes(x = elevation)) +\n  geom_density(fill = \"orange\")",
+    "crumbs": [
+      "In-class Activities",
+      "<span class='chapter-number'>6</span>  <span class='chapter-title'>Univariate Viz</span>"
+    ]
+  },
+  {
+    "objectID": "ica/ica-uni.html#exercise-12-density-plots-vs-histograms",
+    "href": "ica/ica-uni.html#exercise-12-density-plots-vs-histograms",
+    "title": "Univariate Viz",
+    "section": "Exercise 12: Density Plots vs Histograms",
+    "text": "Exercise 12: Density Plots vs Histograms\n\nDensity plots: communicate ranges and typical outcomes more effectively, especially with large n, but fall short in expressing discrete amounts of variables.\nHistograms: better visualize discrete ranges of data and are better at looking at small chunks of data in context, while are not as good at offering analysis of data trends.",
+    "crumbs": [
+      "In-class Activities",
+      "<span class='chapter-number'>6</span>  <span class='chapter-title'>Univariate Viz</span>"
+    ]
+  },
+  {
+    "objectID": "ica/ica-uni.html#exercise-13-code-communication",
+    "href": "ica/ica-uni.html#exercise-13-code-communication",
+    "title": "Univariate Viz",
+    "section": "Exercise 13: Code = communication",
+    "text": "Exercise 13: Code = communication\nImportant to indent lines of code after first line for long strings, and place line breaks after each +",
+    "crumbs": [
+      "In-class Activities",
+      "<span class='chapter-number'>6</span>  <span class='chapter-title'>Univariate Viz</span>"
+    ]
+  },
+  {
+    "objectID": "ica/ica-uni.html#exercise-14-practice",
+    "href": "ica/ica-uni.html#exercise-14-practice",
+    "title": "Univariate Viz",
+    "section": "Exercise 14: Practice",
+    "text": "Exercise 14: Practice\n\n# Data on students in this class\nsurvey &lt;- read.csv(\"https://hash-mac.github.io/stat112site-s25/data/survey.csv\")\n# Reviewing variables\nhead(survey)\n\n         cafe_mac minutes_to_campus fav_temp_c       hangout\n1 mashed potatoes                 5         26 the mountains\n2        is tasty                 5         28        a city\n3          burger                 5         19      a forest\n4    caesar salad                12         18      a forest\n5       ice cream                 0         24 the mountains\n6           tofu                 10        -10 the mountains\n\n\n\n# Creating bar graph for hangout\nggplot(survey, aes(x = hangout)) +\n  geom_bar(fill = \"grey\") +\n  labs(x = \"ideal hangout\", y = \"# of students\") +\n  theme_light()\n\n\n\n\n\n\n\n\n\n# Creating density plot for fav_temp_c\nggplot(survey, aes(x = fav_temp_c)) +\n  geom_density(fill = \"gray\") +\n  labs(x = \"Fav Temp (°C)\", y = \"Density\") +\n  theme_linedraw()\n\n\n\n\n\n\n\n\n\n# Creating histogram for minutes_to_campus\nggplot(survey, aes(minutes_to_campus)) +\n  geom_histogram(color = \"white\", fill = \"gray\", binwidth = 5) +\n  labs(x = \"Minutes to Campus\", y = \"# of Students\") +\n  theme_light()",
     "crumbs": [
       "In-class Activities",
       "<span class='chapter-number'>6</span>  <span class='chapter-title'>Univariate Viz</span>"
