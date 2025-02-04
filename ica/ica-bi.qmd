@@ -1,5 +1,305 @@
 ---
 title: "Bivariate Viz"
+number-sections: false
 ---
 
 Use this file for practice with the **bivariate viz** in-class activity.  Refer to the class website for details.
+
+```{r}
+# Load data
+elections <- read.csv("https://mac-stat.github.io/data/election_2020_county.csv")
+
+# Check it out
+head(elections)
+
+# Load packages
+library(ggplot2)
+```
+
+## Exercise 0: Review
+
+### Part A
+
+```{r}
+# Plot of winner variable
+ggplot(elections, aes(x = winner_20)) +
+  geom_bar(fill = "grey") +
+  labs(x = "Winner", y = "Counties Won") +
+  theme_light()
+```
+
+### Part B
+
+```{r}
+# Plot repub_pct_20 variable
+ggplot(elections, aes(x = repub_pct_20)) +
+  geom_histogram(binwidth = 10, color = "white", fill = "grey") +
+  labs(x = "% Republican", y = "# Counties") +
+  theme_light()
+```
+
+These two graphs tell us that a) Republicans won the vast majority of counties in 2020 and b) they won most of those counties by >50%. However, Democrats won in 2020, leading me to assume that a population comparison would be a more effective data visualization.
+
+## Exercise 1: Quantitative vs Quantitative Intuition Check
+
+Scatterplot setup: `geom_scatterplot`? With the lead function `ggplot(elections, aes(x = , y = ))` rather than just `x = `.
+
+## Exercise 2: 2 Quantitiative Variables
+
+Scatterplots
+
+```{r}
+# Set up the plotting frame
+# How does this differ than the frame for our histogram of repub_pct_20 alone?
+# Frame has variables on both axes
+ggplot(elections, aes(y = repub_pct_20, x = repub_pct_16))
+
+```
+```{r}
+# Add a layer of points for each county
+# Take note of the geom!
+ggplot(elections, aes(y = repub_pct_20, x = repub_pct_16)) +
+  geom_point()
+```
+```{r}
+# Change the shape of the points
+# What happens if you change the shape to another number?
+ggplot(elections, aes(y = repub_pct_20, x = repub_pct_16)) +
+  geom_point(shape = 3)
+```
+```{r}
+# Change the shape of the points
+# What happens if you change the shape to another number?
+ggplot(elections, aes(y = repub_pct_20, x = repub_pct_16)) +
+  geom_point(shape = 40)
+```
+```{r}
+# YOU TRY: Modify the code to make the points "orange"
+# NOTE: Try to anticipate if "color" or "fill" will be useful here. Then try both.
+ggplot(elections, aes(y = repub_pct_20, x = repub_pct_16)) +
+  geom_point(color = "pink")
+```
+```{r}
+# YOU TRY: Modify the code to make the points "orange"
+# NOTE: Try to anticipate if "color" or "fill" will be useful here. Then try both.
+ggplot(elections, aes(y = repub_pct_20, x = repub_pct_16)) +
+  geom_point(fill = "pink")
+```
+```{r}
+# YOU TRY: Modify the code to make the points "orange"
+# NOTE: Try to anticipate if "color" or "fill" will be useful here. Then try both.
+# Color is the only command that works with dot plots
+ggplot(elections, aes(y = repub_pct_20, x = repub_pct_16)) +
+  geom_point(color = "pink", fill = "red")
+```
+```{r}
+# Add a layer that represents each county by the state it's in
+# Take note of the geom and the info it needs to run!
+ggplot(elections, aes(y = repub_pct_20, x = repub_pct_16)) +
+  geom_text(aes(label = state_abbr))
+```
+
+## Exercise 3: Reflect
+
+ - Relationship is very strong, linear; most counties are similar to the 2016 election.
+ - The direction is positive.
+ - Most deviations are from counties skewing more Republican in 2020. These counties are mostly in Utah, Idaho, and Texas. This may be explained by interstate migration (ID & UT) or voter disenfranchisement tactics (TX), or could just be due to perceived inadequacies of the Democratic establishment. 
+ 
+## Exercise 4: Visualizing trend
+
+```{r}
+ggplot(elections, aes(y = repub_pct_20, x = repub_pct_16)) +
+  geom_point() +
+  geom_smooth()
+```
+### Part A
+
+```{r}
+# Construct linear plot from point data
+ggplot(elections, aes(y = repub_pct_20, x = repub_pct_16)) +
+  geom_smooth()
+```
+
+### Part B
+
+```{r}
+# Find best linear model; line of best fit
+ggplot(elections, aes(y = repub_pct_20, x = repub_pct_16)) +
+  geom_point() +
+  geom_smooth(method = "lm")
+```
+
+## Exercise 5: Your Turn
+
+```{r}
+# Scatterplot of repub_pct_20 vs median_rent
+ggplot(elections, aes(y = repub_pct_20, x = median_rent)) +
+  geom_point() +
+  geom_smooth()
+
+# Scatterplot of repub_pct_20 vs median_age
+ggplot(elections, aes(y = repub_pct_20, x = median_age)) +
+  geom_point() +
+  geom_smooth()
+```
+Median rent is a slightly better predictor of election outcomes: Republican votes negatively correlate with higher rents, *except* for in the lowest rent areas. 
+
+## Exercise 6: A Sad Scatterplot
+
+```{r}
+ggplot(elections, aes(y = repub_pct_20, x = historical)) +
+  geom_point()
+```
+This does not work because the data is not legible and except for a few outliers it is impossible to identify any real trends.
+
+## Exercise 7: Quantitative vs Categorical – Violins & Boxes
+
+```{r}
+# Side-by-side violin plots
+ggplot(elections, aes(y = repub_pct_20, x = historical)) +
+  geom_violin()
+```
+
+```{r}
+# Side-by-side boxplots (defined below)
+ggplot(elections, aes(y = repub_pct_20, x = historical)) +
+  geom_boxplot()
+```
+On average, county support is >50% on average, but is lower in blue sttes than purple states, and lower in purple states than in red states.
+
+## Exercise 8: Quantitative vs Categorical – Intuition Check
+
+```{r}
+ggplot(elections, aes(x = repub_pct_20, fill = historical)) +
+  geom_density()
+```
+
+## Exercise 9: Quantitative vs Categorical – Density Plots
+
+```{r}
+# Name two "bad" things about this plot
+# 1. Colors don't mqtch, blue and purple graphs not fully visible.
+ggplot(elections, aes(x = repub_pct_20, fill = historical)) +
+  geom_density()
+```
+```{r}
+# scale_fill_manual allows us to pick the fill colors by hand.
+ggplot(elections, aes(x = repub_pct_20, fill = historical)) +
+  geom_density() +
+  scale_fill_manual(values = c("blue", "purple", "red"))
+```
+```{r}
+# alpha = 0.5 reduces the opacity of the fill colors in order to see the rest of the data.
+# Play around with different values of alpha, between 0 and 1
+ggplot(elections, aes(x = repub_pct_20, fill = historical)) +
+  geom_density(alpha = 0.5) +
+  scale_fill_manual(values = c("blue", "purple", "red"))
+```
+```{r}
+# facet_wrap facets each peak, as divided by historical data.
+ggplot(elections, aes(x = repub_pct_20, fill = historical)) +
+  geom_density() +
+  scale_fill_manual(values = c("blue", "purple", "red")) +
+  facet_wrap(~ historical)
+```
+```{r}
+# Let's try a similar grouping strategy with a histogram instead of density plot.
+# Why is this terrible? This doesn't work because the blue data is barely visible and doesn't tell us anything
+ggplot(elections, aes(x = repub_pct_20, fill = historical)) +
+  geom_histogram(color = "white") +
+  scale_fill_manual(values = c("blue", "purple", "red"))
+```
+## Exercise 10
+
+- Density plots are more visually compelling and is easier to compare the full set of data, while box plots better capture data variation.
+
+## Exercise 11: Categorical vs Categorical – Intuition Check
+
+```{r}
+ggplot(elections, aes(x = historical, fill = winner_20)) +
+  geom_bar() +
+  scale_fill_manual(values = c("red", "blue"))
+```
+
+```{r}
+ggplot(elections, aes(x = winner_20)) +
+  geom_bar() +
+  facet_wrap(~ historical)
+```
+
+## Exercise 12: Categorical vs Categorical
+
+```{r}
+# A stacked bar plot
+# How are the "historical" and "winner_20" variables mapped to the plot, i.e. what roles do they play?
+ggplot(elections, aes(x = historical, fill = winner_20)) +
+  geom_bar()
+```
+```{r}
+# A faceted bar plot
+ggplot(elections, aes(x = winner_20)) +
+  geom_bar() +
+  facet_wrap(~ historical)
+```
+```{r}
+# A side-by-side bar plot
+# Note the new argument to geom_bar
+ggplot(elections, aes(x = historical, fill = winner_20)) +
+  geom_bar(position = "dodge")
+```
+```{r}
+# A proportional bar plot
+# Note the new argument to geom_bar
+ggplot(elections, aes(x = historical, fill = winner_20)) +
+  geom_bar(position = "fill")
+```
+
+## Exercise 13: Practice (now or later)
+```{r}
+weather <- read.csv("https://mac-stat.github.io/data/weather_3_locations.csv")
+head(weather)
+```
+
+```{r}
+# How do 3pm temperatures (temp3pm) differ by location?
+ggplot(weather, aes(x = location, y = temp3pm)) +
+  geom_violin() +
+  theme_light()
+```
+```{r}
+# How might we predict the 3pm temperature (temp3pm) by the 9am temperature (temp9am)?
+ggplot(weather, aes(x = temp9am, y = temp3pm)) + 
+  geom_point() +
+  geom_smooth() +
+  theme_light()
+```
+```{r}
+# How do the number of rainy days (raintoday) differ by location?
+ggplot(weather, aes(x = location, fill = raintoday)) +
+  geom_bar() +
+  theme_light()
+```
+## Optional
+
+### Part A: Joy Plots
+```{r}
+# Install ggridges package
+library(ggridges)
+library(forcats)
+
+# Make our first joy plot
+# THINK: What DON'T you like about this?
+ggplot(elections, aes(x = repub_pct_20, y = state_abbr)) + 
+  geom_density_ridges()
+```
+```{r}
+# Let's put the states in order by Republican support, not alphabet
+# How do you think fct_reorder works? We'll learn about this later in the semester.
+ggplot(elections, aes(x = repub_pct_20, y = fct_reorder(state_abbr, repub_pct_20), fill = historical)) + 
+  geom_density_ridges(alpha = 0.5) +
+  scale_fill_manual(values = c("blue", "purple", "red")) +
+  labs(x = "% Republican", y = "State", fill = "Historical Trends") +
+  theme_light()
+```
+
+
