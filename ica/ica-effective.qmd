@@ -1,0 +1,79 @@
+---
+title: "Effective Viz"
+number-sections: false
+---
+
+## Exercise 1: Professionalism
+Weather in Australia:
+```{r}
+# Load tidyverse package for plotting and wrangling
+library(tidyverse)
+
+# Import the data
+weather <- read.csv("https://mac-stat.github.io/data/weather_3_locations.csv") |> 
+  mutate(date = as.Date(date))
+```
+```{r}
+ggplot(weather, aes(y = temp3pm, x = temp9am, color = location)) + 
+  geom_point()
+```
+### Part A
+```{r}
+#| warning: false
+ggplot(weather, aes(y = temp3pm, x = temp9am, color = location)) + 
+  geom_point() + 
+  labs(x = "Temperature @ 9AM (ºC)", y = "Temperature @ 3PM (ºC)", title = "Temperatures by Time of Day", color = "Location")
+```
+### Part B
+
+```{r}
+#| fig-cap: "A point plot comparing temperatures in Hobart, Uluru, and Wollongong, Australia, at 9AM and 3PM."
+#| warning: false
+
+ggplot(weather, aes(y = temp3pm, x = temp9am, color = location)) + 
+  geom_point() + 
+  labs(x = "Temperature @ 9AM (ºC)", y = "Temperature @ 3PM (ºC)", title = "Temperatures by Time of Day", color = "Location")
+```
+
+## Exercise 2: Accessibility
+
+```{r}
+#| warning: false
+# Initial graphic
+ggplot(weather, aes(x = temp3pm, fill = location)) + 
+  geom_density(alpha = 0.5) + 
+  labs(x = "3pm temperature (Celsius)") 
+```
+
+### Part a
+```{r}
+#| warning: false
+#| fig-cap: "Density plots of 3pm temperatures in 3 Australian locations."
+#| fig-alt: "Density plots showing 3PM temperatures in degrees Celsius at Hobart, Uluru, and Wollongong, Australia. Hobart has the lowest temperatures, while Uluru has the highest, while Uluru also has the highest range of temperatures and Wollongong has the lowest range."
+
+ggplot(weather, aes(x = temp3pm, fill = location)) + 
+  geom_density(alpha = 0.5) + 
+  labs(x = "3pm temperature (Celsius)")  
+```
+
+### Part b
+```{r}
+#| warning: false
+# Colorblind-accessible scheme. "d" indicates discrete colors; a "c" would be continuous. "fill" and "color" depend on their respective ggplot() commands
+ggplot(weather, aes(x = temp3pm, fill = location)) + 
+  geom_density(alpha = 0.5) + 
+  labs(x = "3pm temperature (Celsius)") + 
+  scale_fill_viridis_d()    
+```
+
+```{r}
+#| warning: false
+# In the color scale line:
+# Change "fill" to "color" since we use color in the aes()
+# Change "d" (discrete) to "c" (continuous) since maxtemp is on a continuous scale
+ggplot(weather, aes(y = temp3pm, x = temp9am, color = maxtemp)) + 
+  geom_point(alpha = 0.5) + 
+  labs(x = "3pm temperature (Celsius)") + 
+  scale_color_viridis_c()
+```
+
