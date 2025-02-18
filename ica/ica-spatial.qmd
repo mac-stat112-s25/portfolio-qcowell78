@@ -58,15 +58,6 @@ Earlier this semester, I asked for the latitude and longitude of one of your fav
 I rounded these to the nearest whole number, so that they're near to but not exactly at those places.
 Let's load [the data](../data/our_fave_places.csv) and map it!
 
-```{r}
-#| echo: false
-
-fave_places <- read.csv("../data/our_fave_places.csv")
-
-# Check it out
-head(fave_places)
-```
-
 
 ```{r}
 fave_places <- read.csv("https://hash-mac.github.io/stat112site-s25/data/our_fave_places.csv")
