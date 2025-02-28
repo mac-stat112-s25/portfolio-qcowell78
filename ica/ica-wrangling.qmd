@@ -1,0 +1,275 @@
+---
+title: "Wrangling"
+format: html
+number-sections: false
+---
+
+```{r}
+# Load tidyverse & data
+library(tidyverse)
+elections <- read.csv("https://mac-stat.github.io/data/election_2020_county.csv")
+head(elections)
+```
+
+## Exercise 1: `select` Practice
+
+```{r}
+# Define elections_small
+elections_small <- elections |>
+  select(state_name, county_name, total_votes_20, repub_pct_20, dem_pct_20, total_votes_16, dem_pct_16)
+
+# Check out the first 6 rows to confirm your code did what you think it did!
+head(elections_small)
+```
+
+## Exercise 2: `filter` Demo
+
+```{r}
+# Keep only data on counties in Hawaii
+elections_small |>
+ filter(state_name == "Hawaii")
+
+# Check
+head(elections_small)
+```
+
+```{r}
+# What does this do?
+elections_small |>
+  filter(state_name %in% c("Hawaii", "Delaware"))
+```
+
+```{r}
+# Keep only data on counties where the Republican got MORE THAN 93.97% of the vote in 2020
+elections_small |>
+  filter(repub_pct_20 > "93.97")
+# THINK: What variable is relevant here?
+```
+
+```{r}
+# Keep only data on counties where the Republican got AT LEAST 93.97% of the vote in 2020
+elections_small |>
+  filter(repub_pct_20 >= 93.97)
+# This should have 1 more row (observation) than your answer above
+```
+
+```{r}
+# Keep only data on counties in Texas where the Democrat got more than 65% of the vote in 2020
+# Do this 2 ways.
+# Method 1: 2 filters with 1 condition each
+elections_small |>
+  filter(state_name == "Texas") |>
+  filter(dem_pct_20 > 65)
+
+# Method 2: 1 filter with 2 conditions
+elections_small |>
+ filter(state_name == "Texas", dem_pct_20 > 65)
+```
+
+## Exercise 3: `arrange` Demo
+
+```{r}
+# Arrange the counties in elections_small from lowest to highest percentage of 2020 Republican support
+# Print out just the first 6 rows
+elections_small |>
+  arrange(repub_pct_20) |>
+  head()
+```
+
+```{r}
+# Arrange the counties in elections_small from highest to lowest percentage of 2020 Republican support
+# Print out just the first 6 rows
+elections_small |>
+  arrange(desc(repub_pct_20)) |>
+  head()
+```
+
+## Exercise 4: `mutate` Demo
+
+### Part a
+
+```{r}
+# What did this code do?
+elections_small |>
+  mutate(diff_20 = repub_pct_20 - dem_pct_20) |>
+  head()
+```
+
+```{r}
+# What did this code do?
+elections_small |>
+  mutate(repub_votes_20 = round(total_votes_20 * repub_pct_20/100)) |>
+  head()
+```
+
+```{r}
+# What did this code do?
+elections_small |>
+  mutate(repub_win_20 = repub_pct_20 > dem_pct_20) |>
+  head()
+```
+
+### Part b
+
+```{r}
+# You try
+# Define a variable that calculates the change in Dem support in 2020 vs 2016
+elections_small |>
+ mutate(dem_pct_change = dem_pct_16 - dem_pct_20) |>
+ head()
+```
+
+```{r}
+# You try
+# Define a variable that determines whether the Dem support was higher in 2020 than in 2016 (TRUE/FALSE)
+elections_small |>
+ mutate(dem_gains_20 = dem_pct_20 > dem_pct_16) |>
+ head()
+```
+
+## Exercise 5: Pipe Series
+
+```{r}
+elections_small |>
+  filter(state_name == "Wisconsin",
+         repub_pct_20 < dem_pct_20) |>
+  arrange(desc(total_votes_20)) |>
+  head()
+```
+
+```{r}
+# Now try it. Change the order of filter and arrange below.
+elections_small |>
+  arrange(desc(total_votes_20)) |>
+  filter(state_name == "Wisconsin",
+         repub_pct_20 < dem_pct_20) |>
+  head()
+```
+
+```{r}
+elections_small |>
+  filter(state_name == "Delaware") |>
+  mutate(repub_win_20 = repub_pct_20 > dem_pct_20) |>
+  select(county_name, repub_pct_20, dem_pct_20, repub_win_20)
+```
+
+```{r}
+# Now try it. Change the order of mutate and select below.
+# elections_small |>
+#  filter(state_name == "Delaware") |>
+#  select(county_name, repub_pct_20, dem_pct_20, repub_win_20)|>
+#  mutate(repub_win_20 = repub_pct_20 > dem_pct_20) 
+```
+
+## Exercise 6: DIY Pipe Series
+
+### Part a
+```{r}
+# Show just the counties in Minnesota and their Democratic 2020 vote percentage, from highest to lowest.
+elections_small |>
+  filter(state_name == "Minnesota") |>
+  select(county_name, dem_pct_20) |>
+  arrange(desc(dem_pct_20))
+```
+
+### Part b
+
+```{r}
+# Create a new dataset named mn_wi that sorts the counties in Minnesota and Wisconsin from lowest to highest in terms of the change in Democratic vote percentage in 2020 vs 2016. This dataset should include the following variables (and only these variables): state_name, county_name, dem_pct_20, dem_pct_16, and a variable measuring the change in Democratic vote percentage in 2020 vs 2016.
+# Define the dataset
+# Only store the results once you're confident that they're correct
+mn_wi <- elections |>
+  filter(state_name %in% c("Minnesota", "Wisconsin")) |>
+  mutate(dem_pct_change = dem_pct_16 - dem_pct_20) |>
+  select(state_name, county_name, dem_pct_20, dem_pct_16, dem_pct_change) |>
+  arrange(dem_pct_20)
+```
+
+## Part c
+
+```{r}
+# Construct and discuss a plot of the county-level change in Democratic vote percent in 2020 vs 2016, and how this differs between Minnesota and Wisconsin.
+ggplot(mn_wi, aes(x = dem_pct_change, fill = state_name)) +
+  geom_density(alpha = 0.5) +
+  theme_light() +
+  labs(x = "Change in Democratic Vote Share (% points)", fill = "State", title = "MN and WI Democratic Presidential Votes by County in 2016 & 2020")
+```
+
+## Exercise 7: `summarize` Demo
+
+```{r}
+# What does this do?
+elections_small |>
+  summarize(median(repub_pct_20))
+```
+
+```{r}
+# What does this do?
+elections_small |>
+  summarize(median_repub = median(repub_pct_20))
+```
+
+```{r}
+# What does this do?
+elections_small |>
+  summarize(median_repub = median(repub_pct_20), total_votes = sum(total_votes_20))
+```
+
+## Exercise 8: `summarize` + `group_by` demo
+
+```{r}
+elections_small |>
+  group_by(state_name)
+```
+
+```{r}
+# Check out the structure before and after group_by
+elections_small |>
+  class()
+
+elections_small |>
+  group_by(state_name) |>
+  class()
+```
+
+```{r}
+# What does this do?
+# (What if we didn't use group_by?)
+elections_small |>
+  group_by(state_name) |>
+  summarize(median_repub = median(repub_pct_20), total_votes = sum(total_votes_20))
+```
+
+## Exercise 9: DIY
+
+```{r}
+# Sort the *states* from the most to least total votes cast in 2020
+elections_small |>
+  group_by(state_name) |>
+  summarize(median_repub = median(repub_pct_20), total_votes = sum(total_votes_20)) |>
+  arrange(desc(total_votes))
+```
+
+```{r}
+# In 2020, what were the total number of votes for the Democratic candidate and the total number of votes for the Republican candidate in each *state*?
+elections_small |>
+  mutate(
+    repub_votes = round(total_votes_20 * repub_pct_20/100),
+    dem_votes = round(total_votes_20 * dem_pct_20/100)
+  ) |>
+  group_by(state_name) |>
+  summarise(total_dem = sum(dem_votes), total_repub = sum(repub_votes))
+```
+
+```{r}
+# What states did the Democratic candidate win in 2020?
+elections_small |>
+  mutate(
+    repub_votes = round(total_votes_20 * repub_pct_20/100),
+    dem_votes = round(total_votes_20 * dem_pct_20/100)
+  ) |>
+  group_by(state_name) |>
+  summarise(total_dem = sum(dem_votes), total_repub = sum(repub_votes)) |>
+  mutate(dem_win_20 = total_dem > total_repub)
+```
+

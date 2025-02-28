@@ -1,0 +1,74 @@
+---
+title: "Dates"
+format: html
+number-sections: false
+---
+
+```{r}
+# Load dataset
+library(tidyverse)
+penguins <- read_csv('https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2020/2020-07-28/penguins.csv')
+
+# Check it out
+head(penguins)
+```
+
+
+## Exercise 1: More Filtering
+
+### Part a
+
+```{r}
+# Create a dataset with just Adelie and Chinstrap using %in%
+# Pipe this into `count(species)` to confirm that you only have these 2 species
+penguins |>
+  filter(species %in% c("Adelie", "Chinstrap")) |>
+  count(species)
+```
+
+```{r}
+# Create a dataset with just Adelie and Chinstrap using !=
+# Pipe this into `count(species)` to confirm that you only have these 2 species
+penguins |>
+  filter(species != "Gentoo") |>
+  count(species)
+```
+
+### Part b
+
+#### Example 1
+
+```{r}
+# NOTE the use of is.na()
+penguins |> 
+  summarize(sum(is.na(body_mass_g)))
+```
+
+```{r}
+# NOTE the use of is.na()
+penguins_w_body_mass <- penguins |> 
+  filter(!is.na(body_mass_g))
+
+# Compare the number of penguins in this vs the original data
+nrow(penguins_w_body_mass)
+```
+```{r}
+nrow(penguins)
+```
+```{r}
+penguins_w_body_mass |> 
+  summarize(sum(is.na(sex)))
+```
+#### Example 2
+
+```{r}
+penguins_complete <- penguins |> 
+  na.omit()
+```
+```{r}
+nrow(penguins_complete)
+```
+```{r}
+nrow(penguins)
+```
+

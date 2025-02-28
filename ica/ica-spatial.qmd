@@ -1,6 +1,10 @@
 ---
 title: "Spatial Viz"
 ---
+```{r}
+#| echo: false
+library(tidyverse)
+```
 
 ### Preview
 
@@ -620,7 +624,7 @@ ggplot(elections_by_counties, aes(map_id = county_fips, fill = median_rent)) +
   geom_map(map = county_map) +
   expand_limits(x = county_map$long, y = county_map$lat) +
   theme_map() +
-  scale_fill_gradientn(name = "Median Rent", colors = c("yellow", "orange", "red"))
+  scale_fill_gradientn(name = "Median Rent", colors = c("yellow", "orange", "red")) +
   theme(legend.position = "right") + 
   coord_equal()
 ```

@@ -3,3 +3,18 @@ title: "Univariate Viz"
 ---
 
 Use this file to generate a professional looking **univariate** visualization. The visualization will not perfect the first time but you are expected to improve on it throughout the semester especially after covering advanced topics such as effective viz.
+
+```{r}
+#| fig-cap: "Bar graph showing the ideal hangout locations of STAT 112 students."
+#| fig-alt: "Bar graph showing the ideal hangout locations of STAT 112 students from a selection of five locations. `City` received the most votes, with around 21, and `prairie` received the least, with around 4"
+# load package
+library(tidyverse)
+# Data on students in this class
+survey <- read.csv("https://hash-mac.github.io/stat112site-s25/data/survey.csv")
+# Create bar graph
+ggplot(survey, aes(x = hangout)) +
+  geom_bar(fill = "grey") +
+  labs(x = "Ideal Hangout Spot", y = "# of Students", title = "Ideal Hangout Spots of STAT 112 Students") +
+  theme_light()
+```
+
