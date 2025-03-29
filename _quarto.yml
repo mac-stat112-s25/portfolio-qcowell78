@@ -4,7 +4,7 @@ project:
 
 book:
   title: "COMP/STAT112 Notebook"
-  author: "Quinn Cwoell"
+  author: "Quinn Cowell"
   date: today
   reader-mode: true
   page-navigation: true
@@ -33,12 +33,17 @@ book:
 
     - part: "In-class Activities"
       chapters: 
+      - ica/quarto-demo.qmd
       - ica/ica-uni.qmd
       - ica/ica-bi.qmd
       - ica/ica-multi.qmd
       - ica/ica-spatial.qmd
-      - ica/quarto-demo.qmd
-      - ica/wrangling.qmd
+      - ica/ica-wrangling.qmd
+      - ica/ica-date.qmd
+      - ica/ica-reshaping.qmd
+      - ica/ica-joining.qmd
+      - ica/ica-factors.qmd
+      - ica/ica-data-import.qmd
 
 format:
   html:

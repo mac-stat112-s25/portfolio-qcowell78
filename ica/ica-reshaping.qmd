@@ -1,0 +1,163 @@
+---
+title: "Reshaping"
+format: html
+number-sections: false
+---
+
+## Exercise 1: What’s the problem?
+
+```{r}
+library(tidyverse)
+sleep_wide <- read.csv("https://mac-stat.github.io/data/sleep_wide.csv")
+
+head(sleep_wide)
+nrow(sleep_wide)
+```
+
+## Exercise 2: Pivot longer
+
+```{r}
+# For cols, try 2 appproaches: using - and starts_with
+sleep_wide |>
+  pivot_longer(cols = 2:11, names_to = "day", values_to = "rxn_time") |>
+  head()
+```
+
+```{r}
+sleep_long <- sleep_wide |>
+  pivot_longer(cols = -Subject,
+               names_to = "day",
+               names_prefix = "day_",
+               values_to = "reaction_time")
+
+head(sleep_long)
+```
+
+### Part b
+
+```{r}
+# construct a line plot of reaction time vs day for each subject
+ggplot(sleep_long, aes(x = day, y = reaction_time, colour = Subject)) +
+  geom_point()
+# This will look goofy no matter what you do (variable classes)
+```
+
+## Exercise 3: Changing variable classes & plotting
+
+```{r}
+# changing classes of subject and day
+sleep_long <- sleep_wide |>
+  pivot_longer(cols = -Subject,
+               names_to = "day",
+               names_prefix = "day_",
+               values_to = "reaction_time") |> 
+  mutate(Subject = as.factor(Subject), day = as.numeric(day))
+
+# Check it out
+# Same data, different class
+head(sleep_long)
+```
+
+### Plots
+
+```{r}
+# Make a line plot of reaction time by day for each subject
+# Put these all on the same frame
+ggplot(sleep_long, aes(x = day, y = reaction_time, colour = Subject)) +
+  geom_line() +
+  theme_light()
+```
+
+```{r}
+# Make a line plot of reaction time by day for each subject
+# Put these all on separate frames (one per subject)
+ggplot(sleep_long, aes(x = day, y = reaction_time)) +
+  geom_line() +
+  facet_wrap(~Subject)
+```
+
+## Exercise 4: Pivot wider
+
+### Part a
+
+```{r}
+# Adjust the code below. What don’t you like about the column labels?
+sleep_long |>
+  pivot_wider(names_from = day, values_from = reaction_time) |>
+  head()
+```
+
+### Part b
+
+```{r}
+# Using your intuition, adjust your code from part a to name the reaction time columns “day_0”, “day_1”, etc.
+sleep_long |>
+  pivot_wider(names_from = day, values_from = reaction_time, names_prefix = "day_") |>
+  head()
+```
+
+## Exercise 5: Practice with Billboard charts
+
+```{r}
+# Load data
+library(tidyr)
+data("billboard")
+
+# Check it out
+head(billboard)
+```
+
+Part a
+
+```{r}
+# Construct and summarize a plot of how a song’s Billboard ranking its 2nd week on the chart (y-axis) is related to its ranking the 1st week on the charts (x-axis). 
+# Add a reference line geom_abline(intercept = 0, slope = 1)
+ggplot(billboard, aes(x = wk1, y = wk2)) +
+  geom_point() +
+  geom_abline(intercept = 0, slope = 1) +
+  labs(x = "Week 1", y = "Week 2") +
+  theme_light()
+```
+
+### Part b
+
+```{r}
+#Use your wrangling tools to identify which songs are those above the line in Part a, i.e. with rankgings that went up from week 1 to week 2.
+
+billboard |>
+  filter(wk2 > wk1) |>
+  head()
+```
+
+### Part c
+
+Define a new dataset, `nov_1999`, which:
+
+-   only includes data on songs that entered the Billboard charts on November 6, 1999
+-   keeps all variables except `track` and `date.entered`. HINT: How can you avoid writing out all the variable names you want to keep?
+
+```{r}
+# Define nov_1999
+nov_1999 <- billboard |>
+  filter(date.entered == "1999-11-06") |>
+  select(starts_with("wk"), artist) |>
+  head()
+
+# Confirm that nov_1999 has 2 rows (songs) and 77 columns
+nrow(nov_1999)
+```
+
+### Part d
+
+```{r}
+# Create and discuss a visualization of the rankings (y-axis) over time (x-axis) for the 2 songs in nov_1999.
+nov_1999 |>
+  pivot_longer(cols = -artist,
+               names_to = "week",
+               names_prefix = "wk",
+               values_to = "rank") |>
+  mutate(week = as.numeric(week)) |>
+  ggplot(aes(x = week, y = rank, colour = artist)) +
+    geom_line() +
+    theme_light()
+```

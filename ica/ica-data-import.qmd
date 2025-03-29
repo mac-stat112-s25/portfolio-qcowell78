@@ -1,0 +1,57 @@
+---
+title: "Data Import"
+format: html
+---
+
+```{r}
+library(tidyverse)
+```
+
+
+## Exercise 1: Save Data Locally
+
+Record sources: From TMDb (The Movie Database), via Kaggle data repository
+https://www.kaggle.com/datasets/tmdb/tmdb-movie-metadata
+
+## Exercise 2: Import Data to RStudio
+
+### Part a: Absolute file path
+
+```{r}
+# Using absolute file path
+imdb_messy <- read.csv("~/Documents/GitHub/portfolio-qcowell78/data/imdb_5000_messy.csv")
+```
+
+### Part b: Relative file path
+
+```{r}
+# Get current working directory for .qmd file
+getwd()
+```
+
+```{r}
+# Open data using relative file path
+imdb_temp <- read.csv("../data/imdb_5000_messy.csv")
+```
+
+## Exercise 3: Check Data
+
+### Part a
+
+Open `imdb_messy` in the spreadsheet-like viewer by typing `View(imdb_messy)`
+
+### Part b
+
+```{r}
+# Quick summary of each variable in dataset
+imdb_messy |>
+  mutate(across(where(is.character), as.factor)) |>  # convert characters to factors in order to summarize
+  summary()
+```
+
+## Exercise 4: Clean Data: Factor Variables
+
+```{r}
+
+```
+

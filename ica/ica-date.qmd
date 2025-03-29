@@ -4,6 +4,8 @@ format: html
 number-sections: false
 ---
 
+# Exercises
+
 ```{r}
 # Load dataset
 library(tidyverse)
@@ -70,5 +72,190 @@ nrow(penguins_complete)
 ```
 ```{r}
 nrow(penguins)
+```
+
+## Exercise 2
+
+```{r}
+# First: recall the variable names
+names(penguins)
+```
+
+```{r}
+# Use a shortcut to keep everything but the year and island variables
+penguins |>
+  select(-island, -year)
+```
+
+```{r}
+# Use a shortcut to keep only species and the penguin characteristics measured in mm
+penguins |>
+  select(species, ends_with("mm"))
+```
+
+```{r}
+# Use a shortcut to keep only species and bill-related measurements
+penguins |>
+  select(species, starts_with("bill"))
+```
+
+```{r}
+# Use a shortcut to keep only species and the length-related characteristics
+penguins |>
+  select(species, contains("length"))
+```
+
+## Exercise 3: Arranging, Counting, & Grouping by Multiple Variables
+
+```{r}
+# Change this code to sort the penguins by species, and then island name
+# NOTE: The first row should be an Adelie penguin living on Biscoe island
+penguins |> 
+  arrange(species) |>
+  arrange(island)
+```
+
+```{r}
+# Change this code to count the number of male/female penguins observed for each species
+penguins |>
+  group_by(sex) |>
+  count(species)
+```
+
+```{r}
+# Change this code to calculate the average body mass by species and sex
+penguins |> 
+  group_by(species, sex) |> 
+  summarize(mean = mean(body_mass_g, na.rm = TRUE))
+```
+
+## Exercise 4: Dates
+
+```{r}
+# Get today's date
+as.Date(today())
+```
+
+```{r}
+# Let's store this as "today" so we can work with it below
+today <- as.Date(today())
+
+# Check out the class of this object
+class(today)
+```
+
+```{r}
+year(today)
+```
+
+```{r}
+# What do these lines produce / what's their difference?
+month(today)
+```
+
+```{r}
+month(today, label = TRUE)
+```
+
+```{r}
+# What does this number mean?
+week(today)
+```
+
+```{r}
+# What do these lines produce / what's their difference?
+mday(today)
+```
+
+```{r}
+yday(today)  # This is often called the "Julian day"
+```
+
+```{r}
+# What do these lines produce / what's their difference?
+wday(today)
+```
+
+```{r}
+wday(today, label = TRUE)
+```
+
+```{r}
+# What do the results of these 2 lines tell us?
+today >= ymd("2024-02-14")
+```
+
+```{r}
+today < ymd("2024-02-14")
+```
+
+# Exercises Part 2: Application
+
+```{r}
+library(mosaic)
+data("Birthdays")
+head(Birthdays)
+```
+
+## Exercise 5: Warming up
+
+```{r}
+# How many days of data do we have for each state?
+Birthdays |>
+  group_by(state) |>
+  summarise(sum(day))
+
+# How many total births were there in this time period?
+Birthdays |>
+  summarise(sum(births))
+
+# How many total births were there per state in this time period, sorted from low to high?
+Birthdays |>
+  group_by(state) |>
+  summarise(sum_births = sum(births)) |>
+  arrange(sum_births)
+
+```
+
+## Exercise 6: Homework Reprise
+
+```{r}
+# Create a new dataset named daily_births that includes the total number of births per day (across all states) and the corresponding day of the week.
+daily_births <- Birthdays |>
+  group_by(day) |>
+  summarise(births_per_day = sum(births))
+head(daily_births)
+```
+
+```{r}
+# Construct a plot of births over time, indicating the day of week.
+ggplot(daily_births, aes(x = day, y = births_per_day)) +
+  geom_smooth()
+```
+
+## Exercise 7: Wrangle and Plot
+
+### Part a
+
+```{r}
+# Calculate the total number of births in each month and year, eg, Jan 1969, Feb 1969, …. Label month by names not numbers, eg, Jan not 1. Then, plot the births by month and comment on what you learn.
+
+
+```
+
+### Part b
+
+```{r}
+# In 1988, calculate the total number of births per week in each state. Get rid of week “53”, which isn’t a complete week! Then, make a line plot of births by week for each state and comment on what you learn. For example, do you notice any seasonal trends? Are these the same in every state? Any outliers?
+
+
+```
+
+### Part c
+
+```{r}
+# Repeat the above for just Minnesota (MN) and Louisiana (LA). MN has one of the coldest climates and LA has one of the warmest. How do their seasonal trends compare? Do you think these trends are similar in other colder and warmer states? Try it!
+
+
 ```
 

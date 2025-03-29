@@ -1,0 +1,7 @@
+---
+title: "Factors"
+format: html
+number-sections: false
+---
+
+## Example 1
