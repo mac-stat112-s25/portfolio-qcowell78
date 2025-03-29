@@ -3,4 +3,318 @@ title: "Joining"
 format: html
 number-sections: false
 ---
+```{r}
+library(tidyverse)
+```
+
+## Exercise 1: Where are my keys?
+
+### Part a
+
+```{r}
+# Define two new datasets, with different students and courses:
+students_2 <- data.frame(
+  student = c("D", "E", "F"),
+  class = c("COMP 101", "BIOL 101", "POLI 101")
+)
+
+# Check it out
+students_2
+```
+
+```{r}
+enrollments_2 <- data.frame(
+  course = c("ART 101", "BIOL 101", "COMP 101"),
+  enrollment = c(18, 20, 19)
+)
+
+# Check it out
+enrollments_2
+```
+
+### Part b
+
+The problem is that course name, the key or variable that links these two datasets, is labeled differently: `class` in the `students_2` data and `course` in the `enrollments_2` data. Thus we have to specify these keys in our code:
+```{r}
+students_2 |> 
+  left_join(enrollments_2, join_by(class == course))
+```
+
+### Part c
+
+```{r}
+# Define another set of fake data which adds grade information
+# Add student grades in each course
+students_3 <- data.frame(
+  student = c("Y", "Y", "Z", "Z"),
+  class = c("COMP 101", "BIOL 101", "POLI 101", "COMP 101"),
+  grade = c("B", "S", "C", "A")
+)
+
+# Check it out
+students_3
+```
+
+```{r}
+# Add average grades in each course
+enrollments_3 <- data.frame(
+  class = c("ART 101", "BIOL 101","COMP 101"),
+  grade = c("B", "A", "A-"),
+  enrollment = c(20, 18, 19)
+)
+
+# Check it out
+enrollments_3
+```
+
+```{r}
+# Try doing a left_join() to link the students’ classes to their enrollment info. Did this work? Try and figure out the culprit by examining the output.
+students_3 |> 
+  left_join(enrollments_3)
+```
+
+### Part d
+
+The issue here is that our datasets have 2 column names in common: `class` and `grade`. BUT `grade` is measuring 2 different things here: individual student grades in `students_3` and average student grades in `enrollments_3`. Thus it doesn’t make sense to try to join the datasets with respect to this variable. We can again solve this by specifying that we want to join the datasets using the `class` variable as a key.
+
+```{r}
+students_3 |> 
+  left_join(enrollments_3, join_by(class == class))
+```
+
+## Exercise 2: More small practice
+
+ Define the following fake data on voters (people who have voted) and contact info for voting age adults (people who could vote):
+```{r}
+# People who have voted
+voters <- data.frame(
+  id = c("A", "D", "E", "F", "G"),
+  times_voted = c(2, 4, 17, 6, 20)
+)
+
+voters
+```
+
+```{r}
+# Contact info for voting age adults
+contact <- data.frame(
+  name = c("A", "B", "C", "D"),
+  address = c("summit", "grand", "snelling", "fairview"),
+  age = c(24, 89, 43, 38)
+)
+
+contact
+```
+
+```{r}
+# Use the appropriate join for each prompt below. In each case, think before you type:
+# What dataset goes on the left?
+# What do you want the resulting dataset to look like? How many rows and columns will it have?
+
+# 1. We want contact info for people who HAVEN'T voted
+contact |>
+  anti_join(voters, join_by(name == id)) |>
+  head()
+
+# 2. We want contact info for people who HAVE voted
+contact |>
+  semi_join(voters, join_by(name == id)) |>
+  head()
+
+# 3. We want any data available on each person
+voters |>
+  full_join(contact, join_by(id == name)) |>
+  head()
+
+# 4. When possible, we want to add contact info to the voting roster
+voters |>
+  left_join(contact, join_by(id == name)) |>
+  head()
+```
+
+## Exercise 3: Bigger datasets
+
+```{r}
+# Get rid of some duplicate rows!
+grades <- read.csv("https://mac-stat.github.io/data/grades.csv") |> 
+  distinct(sid, sessionID, .keep_all = TRUE)
+head(grades)
+```
+
+```{r}
+courses <- read.csv("https://mac-stat.github.io/data/courses.csv")
+
+head(courses)
+```
+
+```{r}
+# Use R code to take a quick glance at the data
+# How many observations (rows) and variables (columns) are there in the grades data?
+nrow(grades)
+ncol(grades)
+
+# How many observations (rows) and variables (columns) are there in the courses data?
+nrow(courses)
+ncol(courses)
+```
+
+## Exercise 4: Class size
+
+### Part a
+
+```{r}
+# Before digging in, note that some courses are listed twice in the courses data:
+courses |> 
+  count(sessionID) |> 
+  filter(n > 1)
+```
+
+```{r}
+# If we pick out just 1 of these, we learn that some courses are cross-listed in multiple departments:
+courses |> 
+  filter(sessionID == "session2047")
+```
+
+```{r}
+# Obtain the total enrollments in each sessionID, combining any cross-listed sections
+courses_combined <- courses |>
+  group_by(sessionID) |>
+  summarise(enroll = sum(enroll))
+
+# Check that this has 1695 rows and 2 columns
+dim(courses_combined)
+```
+
+### Part b
+
+```{r}
+# Calculate the median class size across all class sections.
+courses_combined |>
+  summarise(median(enroll))
+```
+
+### Part c
+
+```{r}
+# Calculate the median class size for each individual student. Once you have the correct output, store it as student_class_size,
+student_class_size <- grades |>
+  left_join(courses_combined) |>
+  group_by(sid) |>
+  summarise(median_size = median(enroll))
+```
+
+```{r}
+# Construct a histogram of the median class sizes experienced by the students.
+ggplot(student_class_size, aes(x = median_size)) +
+  geom_histogram(color = "white", binwidth = 3) +
+  theme_light()
+```
+
+## Exercise 5: Narrowing in on classes
+
+### Part a
+
+```{r}
+# Show data on the students that enrolled in session1986
+grades |>
+  filter(sessionID == "session1986")
+  
+```
+
+### Part b
+
+```{r}
+# Below is a dataset with all courses in department E:
+dept_E <- courses |> 
+  filter(dept == "E")
+
+head(dept_E)
+```
+
+```{r}
+# What students enrolled in classes in department E?
+grades |>
+  semi_join(dept_E)
+```
+
+## Exercise 6: All the wrangling
+
+```{r}
+# You’ll need an extra table to convert grades to grade point averages
+gpa_conversion <- tibble(
+  grade = c("A+", "A", "A-", "B+", "B", "B-", "C+", "C", "C-", "D+", "D", "D-", "NC", "AU", "S"), 
+  gp = c(4.3, 4, 3.7, 3.3, 3, 2.7, 2.3, 2, 1.7, 1.3, 1, 0.7, 0, NA, NA)
+)
+
+gpa_conversion
+```
+
+### Part a
+
+```{r}
+# How many total student enrollments are there in each department? Order from high to low.
+courses |>
+  group_by(dept) |>
+  summarise(sum_enroll = sum(enroll)) |>
+  arrange(desc(sum_enroll))
+```
+
+### Part b
+
+```{r}
+# What’s the grade-point average (GPA) for each student?
+grades |>
+  left_join(gpa_conversion) |>
+  na.omit() |>
+  group_by(sid) |>
+  summarise(mean(gp))
+```
+
+### Part c
+
+```{r}
+# What’s the median GPA across all students?
+grades |>
+  left_join(gpa_conversion) |>
+  na.omit() |>
+  summarise(median(gp))
+```
+
+### Part d
+```{r}
+# What fraction of grades are below B+?
+grades |>
+  left_join(gpa_conversion) |>
+  na.omit() |>
+  summarise(grades_below_Bplus = sum(gp < 3.3)/sum(gp >= 0))
+```
+
+### Part e
+
+```{r}
+# What’s the grade-point average for each instructor? Order from low to high.
+courses |>
+  left_join(grades) |>
+  left_join(gpa_conversion) |>
+  na.omit() |>
+  group_by(iid) |>
+  summarise(prof_gpa = mean(gp)) |>
+  arrange(prof_gpa)
+```
+
+```{r}
+# Estimate the grade-point average for each department, and sort from low to high. NOTE: Don’t include cross-listed courses.
+cross_listed <- courses |>
+  count(sessionID) |>
+  filter(n > 1)
+
+courses |>
+  left_join(grades) |>
+  left_join(gpa_conversion) |>
+  anti_join(cross_listed) |> 
+  na.omit(gp) |>
+  arrange(dept) |>
+  group_by(dept) |>
+  summarise(mean(gp))
+```
 
