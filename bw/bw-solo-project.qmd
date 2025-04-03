@@ -1,0 +1,19 @@
+---
+title: "Solo Project: "
+format: html
+number-sections: false
+---
+
+```{r}
+# load packages
+library(tidyverse)
+library(rnaturalearth)
+```
+
+```{r}
+plot(ne_states(country = "Lithuania"))
+```
+```{r}
+plot(ne_states(geounit = "New Jersey"))
+```
+
