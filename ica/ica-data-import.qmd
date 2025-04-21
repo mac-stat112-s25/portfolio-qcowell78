@@ -49,9 +49,3 @@ imdb_messy |>
   summary()
 ```
 
-## Exercise 4: Clean Data: Factor Variables
-
-```{r}
-
-```
-
