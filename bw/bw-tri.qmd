@@ -1,5 +1,54 @@
 ---
 title: "Trivariate Viz"
+execute: 
+  echo: false
+  warning: false
 ---
 
 Use this file to generate a professional looking **trivariate** visualization.  The visualization will not perfect the first time but you are expected to improve on it throughout the semester especially after covering advanced topics such as effective viz.
+
+```{r}
+#| fig-cap: "A bar graph showing the eight Mac professors with the highest total number of students, and their respective departments"
+#| fig-alt: "A bar graph showing the eight Mac professors with the highest total number of students. All the professors are in STEM, with the exception of psychology professor Gillen-O'Neel, and their student numbers range from 64 to 88"
+library(tidyverse)
+
+courses <- read.csv("https://mac-stat.github.io/data/registrar.csv")
+
+courses_clean <- courses |>
+  separate(avail_max, c("avail", "max"), sep = " / ") |>
+  mutate(avail = as.numeric(avail), max = as.numeric(max)) |>
+  mutate(enroll = max-avail) |>
+  separate(number, c("dept", "big_number"), sep = " ") |>
+  separate(big_number, c("number", "section"), sep = "-")
+
+enrollments <- courses_clean |>
+  filter(dept != "PE", dept != "INTD") |>
+  filter(
+    !(dept == "MUSI" & as.numeric(number) < 100), 
+    !(dept == "THDA" & as.numeric(number) < 100)) |>
+  filter(!(str_detect(section, "L")))
+
+enrollments_2 <- enrollments |>
+  distinct(days, time, instructor, .keep_all = TRUE)
+
+enrollments_2 |>
+  group_by(instructor) |>
+  summarise(total_students = sum(enroll)) |>
+  arrange(desc(total_students)) |>
+  left_join(enrollments_2, join_by(instructor == instructor)) |>
+  select(instructor, total_students, dept) |>
+  distinct(instructor, total_students, .keep_all = TRUE) |>
+  head(8) |>
+  separate(instructor, c("first", "last"), " ") |>
+  mutate(last = fct_reorder(last, total_students, .desc = TRUE)) |>
+  ggplot(aes(x = last, y = total_students, fill = dept)) +
+    geom_col() + 
+    labs(
+      title = "Total Number of Students by Professor", 
+      x = "Professor", 
+      y = "# of Students", 
+      fill = "Department") +
+    theme_light() +
+    scale_fill_viridis_d()
+```
+
