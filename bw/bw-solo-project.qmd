@@ -53,11 +53,10 @@ avg_internal_clean <- lt_internal_migration |>
   mutate(migration_cats = 
            cut(avg_net_im,
               breaks = c(-1527, -1000, -750, -450, 0, 1000, 2000, 4000),
-              labels = c("-1527 to -1000", "-999 to -750", "-749 to -473", "-472 to 762", "763 to 1000", "1001 to 1500", "1501 to 3897"), # discretizing for better color control
+              labels = c("-1527 to -1000", "-999 to -750", "-749 to -473", "-472 to 762", "763 to 1000", "1001 to 1500", "1501 to 3897"),
               include.lowest = TRUE
-  ))
+  )) # discretizing for better color control
 
-avg_internal_clean
 ```
 
 ```{r}
