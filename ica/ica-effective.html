@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="generator" content="quarto-1.5.57">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-<title>7&nbsp; My first Quarto document – COMP/STAT112 Notebook</title>
+<title>Effective Viz – COMP/STAT112 Notebook</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -59,8 +59,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../">
-<link href="../ica/ica-uni.html" rel="next">
-<link href="../bw/bw-solo-project.html" rel="prev">
+<link href="../ica/ica-wrangling.html" rel="next">
+<link href="../ica/ica-spatial.html" rel="prev">
 <script src="../site_libs/quarto-html/quarto.js"></script>
 <script src="../site_libs/quarto-html/popper.min.js"></script>
 <script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
@@ -106,7 +106,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../ica/quarto-demo.html">In-class Activities</a></li><li class="breadcrumb-item"><a href="../ica/quarto-demo.html"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">My first Quarto document</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../ica/quarto-demo.html">In-class Activities</a></li><li class="breadcrumb-item"><a href="../ica/ica-effective.html"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Effective Viz</span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -199,7 +199,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">
 <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../ica/quarto-demo.html" class="sidebar-item-text sidebar-link active">
+  <a href="../ica/quarto-demo.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">My first Quarto document</span></span></a>
   </div>
 </li>
@@ -229,7 +229,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../ica/ica-effective.html" class="sidebar-item-text sidebar-link">
+  <a href="../ica/ica-effective.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Effective Viz</span></span></a>
   </div>
 </li>
@@ -285,20 +285,25 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
         <nav id="TOC" role="doc-toc" class="toc-active"><h2 id="toc-title">Table of contents</h2>
    
   <ul>
-<li><a href="#intro" id="toc-intro" class="nav-link active" data-scroll-target="#intro"><span class="header-section-number">7.1</span> Intro</a></li>
-  <li><a href="#exercise-1-deduce-quarto-features" id="toc-exercise-1-deduce-quarto-features" class="nav-link" data-scroll-target="#exercise-1-deduce-quarto-features"><span class="header-section-number">7.2</span> Exercise 1: Deduce Quarto features</a></li>
-  <li><a href="#exercise-2-code" id="toc-exercise-2-code" class="nav-link" data-scroll-target="#exercise-2-code"><span class="header-section-number">7.3</span> Exercise 2: Code</a></li>
-  <li><a href="#exercise-3-chunks" id="toc-exercise-3-chunks" class="nav-link" data-scroll-target="#exercise-3-chunks"><span class="header-section-number">7.4</span> Exercise 3: Chunks</a></li>
-  <li><a href="#exercise-4-practice" id="toc-exercise-4-practice" class="nav-link" data-scroll-target="#exercise-4-practice"><span class="header-section-number">7.5</span> Exercise 4: Practice</a></li>
-  <li><a href="#exercise-5-fix-this-code" id="toc-exercise-5-fix-this-code" class="nav-link" data-scroll-target="#exercise-5-fix-this-code"><span class="header-section-number">7.6</span> Exercise 5: Fix this code</a></li>
-  <li><a href="#exercise-6-comments" id="toc-exercise-6-comments" class="nav-link" data-scroll-target="#exercise-6-comments"><span class="header-section-number">7.7</span> Exercise 6: Comments</a></li>
+<li>
+<a href="#exercise-1-professionalism" id="toc-exercise-1-professionalism" class="nav-link active" data-scroll-target="#exercise-1-professionalism">Exercise 1: Professionalism</a>
+  <ul class="collapse">
+<li><a href="#part-a" id="toc-part-a" class="nav-link" data-scroll-target="#part-a">Part A</a></li>
+  <li><a href="#part-b" id="toc-part-b" class="nav-link" data-scroll-target="#part-b">Part B</a></li>
+  </ul>
+</li>
+  <li>
+<a href="#exercise-2-accessibility" id="toc-exercise-2-accessibility" class="nav-link" data-scroll-target="#exercise-2-accessibility">Exercise 2: Accessibility</a>
+  <ul class="collapse">
+<li><a href="#part-a-1" id="toc-part-a-1" class="nav-link" data-scroll-target="#part-a-1">Part a</a></li>
+  <li><a href="#part-b-1" id="toc-part-b-1" class="nav-link" data-scroll-target="#part-b-1">Part b</a></li>
+  </ul>
+</li>
   </ul></nav>
     </div>
 <!-- main -->
-<main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../ica/quarto-demo.html">In-class Activities</a></li><li class="breadcrumb-item"><a href="../ica/quarto-demo.html"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">My first Quarto document</span></a></li></ol></nav><div class="quarto-title">
-<div class="quarto-title-block"><div><h1 class="title">
-<span class="chapter-number">7</span>&nbsp; <span class="chapter-title">My first Quarto document</span>
-</h1><button type="button" class="btn code-tools-button" id="quarto-code-tools-source"><i class="bi"></i> Code</button></div></div>
+<main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../ica/quarto-demo.html">In-class Activities</a></li><li class="breadcrumb-item"><a href="../ica/ica-effective.html"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Effective Viz</span></a></li></ol></nav><div class="quarto-title">
+<div class="quarto-title-block"><div><h1 class="title"><span class="chapter-title">Effective Viz</span></h1><button type="button" class="btn code-tools-button" id="quarto-code-tools-source"><i class="bi"></i> Code</button></div></div>
 </div>
 
 
@@ -312,106 +317,124 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   
 
 
-</header><section id="intro" class="level2" data-number="7.1"><h2 data-number="7.1" class="anchored" data-anchor-id="intro">
-<span class="header-section-number">7.1</span> Intro</h2>
-<p><strong>Macalester College</strong> is in the <em>Twin Cities</em>. It has:</p>
-<ul>
-<li>four seasons</li>
-<li>bagpipes</li>
-<li>delightful students</li>
-</ul>
-<p>Check it out for yourself:</p>
-<p><img src="https://www.macalester.edu/about/wp-content/uploads/sites/191/2019/12/campusmap336.png" class="img-fluid"></p>
-</section><section id="exercise-1-deduce-quarto-features" class="level2" data-number="7.2"><h2 data-number="7.2" class="anchored" data-anchor-id="exercise-1-deduce-quarto-features">
-<span class="header-section-number">7.2</span> Exercise 1: Deduce Quarto features</h2>
-<p>Check out the appearance and contents of this document. Thoughts?</p>
-<p>In the toolbar at the top of this document, <strong>Render</strong> the .qmd file into a .html file. Where is this file stored? Thoughts about its appearance / contents? Can you edit it?</p>
-<p>Toggling between the .qmd and .html files, explain the purpose of the following features in the .qmd file:</p>
-<p><code>*</code> A single asterisk on each side of a phrase italicizes that phrase.</p>
-<p><code>**</code> Two asterisks on each side of a phrase bold that phrase.</p>
-<p><code>#</code> A double hashtag inroduces a section heading, and a single hashtag is used for notes.</p>
-<p><code>-</code> A hyphen creates a bulleted list.</p>
-<p><code>\</code> No backslashes in document.</p>
-<p><code>![](url)</code> This phrase allows the image to load.</p>
-</section><section id="exercise-2-code" class="level2" data-number="7.3"><h2 data-number="7.3" class="anchored" data-anchor-id="exercise-2-code">
-<span class="header-section-number">7.3</span> Exercise 2: Code</h2>
-<p>How does this appear in the .qmd? The .html? So…?!</p>
-<p>seq(from = 100, to = 1000, by = 50)</p>
-<p>This does not function as a string of code on the webpage, but rather is only text.</p>
-</section><section id="exercise-3-chunks" class="level2" data-number="7.4"><h2 data-number="7.4" class="anchored" data-anchor-id="exercise-3-chunks">
-<span class="header-section-number">7.4</span> Exercise 3: Chunks</h2>
-<p>Quarto isn’t a mind reader – we must distinguish R code from text. We do so by putting code inside an <strong>R chunk</strong>:</p>
+</header><section id="exercise-1-professionalism" class="level2"><h2 class="anchored" data-anchor-id="exercise-1-professionalism">Exercise 1: Professionalism</h2>
+<p>Weather in Australia:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1"></a><span class="fu">seq</span>(<span class="at">from =</span> <span class="dv">100</span>, <span class="at">to =</span> <span class="dv">1000</span>, <span class="at">by =</span> <span class="dv">50</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code> [1]  100  150  200  250  300  350  400  450  500  550  600  650  700  750  800
-[16]  850  900  950 1000</code></pre>
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1"></a><span class="co"># Load tidyverse package for plotting and wrangling</span></span>
+<span id="cb1-2"><a href="#cb1-2"></a><span class="fu">library</span>(tidyverse)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>── Attaching core tidyverse packages ──────────────────────── tidyverse 2.0.0 ──
+✔ dplyr     1.1.4     ✔ readr     2.1.5
+✔ forcats   1.0.0     ✔ stringr   1.5.1
+✔ ggplot2   3.5.1     ✔ tibble    3.2.1
+✔ lubridate 1.9.4     ✔ tidyr     1.3.1
+✔ purrr     1.0.2     
+── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──
+✖ dplyr::filter() masks stats::filter()
+✖ dplyr::lag()    masks stats::lag()
+ℹ Use the conflicted package (&lt;http://conflicted.r-lib.org/&gt;) to force all conflicts to become errors</code></pre>
 </div>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1"></a><span class="co"># Import the data</span></span>
+<span id="cb3-2"><a href="#cb3-2"></a>weather <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">"https://mac-stat.github.io/data/weather_3_locations.csv"</span>) <span class="sc">|&gt;</span> </span>
+<span id="cb3-3"><a href="#cb3-3"></a>  <span class="fu">mutate</span>(<span class="at">date =</span> <span class="fu">as.Date</span>(date))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<ul>
-<li>Put the <code><a href="https://rdrr.io/r/base/seq.html">seq()</a></code> code in the chunk.</li>
-<li>Press the green arrow in the top right of the chunk. What happens in the qmd?</li>
-<li>Render. What appears in the html: R code, output, or both?</li>
-</ul>
-<p>The code shows up as a separate font and color, and also gives an output from the code.</p>
-</section><section id="exercise-4-practice" class="level2" data-number="7.5"><h2 data-number="7.5" class="anchored" data-anchor-id="exercise-4-practice">
-<span class="header-section-number">7.5</span> Exercise 4: Practice</h2>
-<ul>
-<li>Use R code to create the following sequence: 10 10 10 10</li>
-<li>Store the sequence as <code>four_tens</code>.</li>
-<li>Use an R function (which we haven’t learned!) to add up the numbers in <code>four_tens</code>.</li>
-</ul>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1"></a>four_tens <span class="ot">&lt;-</span> <span class="fu">rep</span>(<span class="dv">10</span>,<span class="dv">4</span>)</span>
-<span id="cb3-2"><a href="#cb3-2"></a><span class="fu">sum</span>(four_tens, <span class="at">na.rm =</span> <span class="cn">FALSE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] 40</code></pre>
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1"></a><span class="fu">ggplot</span>(weather, <span class="fu">aes</span>(<span class="at">y =</span> temp3pm, <span class="at">x =</span> temp9am, <span class="at">color =</span> location)) <span class="sc">+</span> </span>
+<span id="cb4-2"><a href="#cb4-2"></a>  <span class="fu">geom_point</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning: Removed 27 rows containing missing values or values outside the scale range
+(`geom_point()`).</code></pre>
+</div>
+<div class="cell-output-display">
+<div>
+<figure class="figure"><p><img src="ica-effective_files/figure-html/unnamed-chunk-2-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
 </div>
 </div>
-</section><section id="exercise-5-fix-this-code" class="level2" data-number="7.6"><h2 data-number="7.6" class="anchored" data-anchor-id="exercise-5-fix-this-code">
-<span class="header-section-number">7.6</span> Exercise 5: Fix this code</h2>
-<p>Code is a form of communication, and the code below doesn’t cut it.</p>
-<p>Put the code in a chunk and fix it.</p>
-<p>Rep(x = 1, times = 10) seq(from=100,to=1000,length=20) theNumberofStudentsinthisclass&lt;-27</p>
+</div>
+<section id="part-a" class="level3"><h3 class="anchored" data-anchor-id="part-a">Part A</h3>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1"></a><span class="fu">rep</span>(<span class="dv">1</span>, <span class="dv">10</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code> [1] 1 1 1 1 1 1 1 1 1 1</code></pre>
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1"></a><span class="fu">ggplot</span>(weather, <span class="fu">aes</span>(<span class="at">y =</span> temp3pm, <span class="at">x =</span> temp9am, <span class="at">color =</span> location)) <span class="sc">+</span> </span>
+<span id="cb6-2"><a href="#cb6-2"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span> </span>
+<span id="cb6-3"><a href="#cb6-3"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"Temperature @ 9AM (ºC)"</span>, <span class="at">y =</span> <span class="st">"Temperature @ 3PM (ºC)"</span>, <span class="at">title =</span> <span class="st">"Temperatures by Time of Day"</span>, <span class="at">color =</span> <span class="st">"Location"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure"><p><img src="ica-effective_files/figure-html/unnamed-chunk-3-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
 </div>
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1"></a><span class="fu">seq</span>(<span class="dv">100</span>, <span class="dv">1000</span>, <span class="dv">20</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code> [1]  100  120  140  160  180  200  220  240  260  280  300  320  340  360  380
-[16]  400  420  440  460  480  500  520  540  560  580  600  620  640  660  680
-[31]  700  720  740  760  780  800  820  840  860  880  900  920  940  960  980
-[46] 1000</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1"></a>number_students <span class="ot">&lt;-</span> <span class="dv">27</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-</section><section id="exercise-6-comments" class="level2" data-number="7.7"><h2 data-number="7.7" class="anchored" data-anchor-id="exercise-6-comments">
-<span class="header-section-number">7.7</span> Exercise 6: Comments</h2>
-<p>Run the chunk below. Notice that R ignores anything in a line starting with a pound sign (<code>#</code>). If we took the <code>#</code> away we’d get an error!</p>
+</section><section id="part-b" class="level3"><h3 class="anchored" data-anchor-id="part-b">Part B</h3>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1"></a><span class="co"># This is a comment</span></span>
-<span id="cb10-2"><a href="#cb10-2"></a><span class="dv">4</span> <span class="sc">+</span> <span class="dv">5</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] 9</code></pre>
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1"></a><span class="fu">ggplot</span>(weather, <span class="fu">aes</span>(<span class="at">y =</span> temp3pm, <span class="at">x =</span> temp9am, <span class="at">color =</span> location)) <span class="sc">+</span> </span>
+<span id="cb7-2"><a href="#cb7-2"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span> </span>
+<span id="cb7-3"><a href="#cb7-3"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"Temperature @ 9AM (ºC)"</span>, <span class="at">y =</span> <span class="st">"Temperature @ 3PM (ºC)"</span>, <span class="at">title =</span> <span class="st">"Temperatures by Time of Day"</span>, <span class="at">color =</span> <span class="st">"Location"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure"><p><img src="ica-effective_files/figure-html/unnamed-chunk-4-1.png" class="img-fluid figure-img" width="672"></p>
+<figcaption>A point plot comparing temperatures in Hobart, Uluru, and Wollongong, Australia, at 9AM and 3PM.</figcaption></figure>
 </div>
 </div>
-<p>We’ll utilize this feature to <strong>comment our code</strong>, i.e.&nbsp;leave short notes about what our code is doing. Below, replace the <code>???</code> with an appropriate comment.</p>
+</div>
+</section></section><section id="exercise-2-accessibility" class="level2"><h2 class="anchored" data-anchor-id="exercise-2-accessibility">Exercise 2: Accessibility</h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1"></a><span class="co"># converting Celsius to Fahrenheit</span></span>
-<span id="cb12-2"><a href="#cb12-2"></a>temperature_c <span class="ot">&lt;-</span> <span class="dv">10</span></span>
-<span id="cb12-3"><a href="#cb12-3"></a>temperature_f <span class="ot">&lt;-</span> temperature_c <span class="sc">*</span> <span class="dv">9</span><span class="sc">/</span><span class="dv">5</span> <span class="sc">+</span> <span class="dv">32</span></span>
-<span id="cb12-4"><a href="#cb12-4"></a>temperature_f</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] 50</code></pre>
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1"></a><span class="co"># Initial graphic</span></span>
+<span id="cb8-2"><a href="#cb8-2"></a><span class="fu">ggplot</span>(weather, <span class="fu">aes</span>(<span class="at">x =</span> temp3pm, <span class="at">fill =</span> location)) <span class="sc">+</span> </span>
+<span id="cb8-3"><a href="#cb8-3"></a>  <span class="fu">geom_density</span>(<span class="at">alpha =</span> <span class="fl">0.5</span>) <span class="sc">+</span> </span>
+<span id="cb8-4"><a href="#cb8-4"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"3pm temperature (Celsius)"</span>) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure"><p><img src="ica-effective_files/figure-html/unnamed-chunk-5-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<section id="part-a-1" class="level3"><h3 class="anchored" data-anchor-id="part-a-1">Part a</h3>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1"></a><span class="fu">ggplot</span>(weather, <span class="fu">aes</span>(<span class="at">x =</span> temp3pm, <span class="at">fill =</span> location)) <span class="sc">+</span> </span>
+<span id="cb9-2"><a href="#cb9-2"></a>  <span class="fu">geom_density</span>(<span class="at">alpha =</span> <span class="fl">0.5</span>) <span class="sc">+</span> </span>
+<span id="cb9-3"><a href="#cb9-3"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"3pm temperature (Celsius)"</span>)  </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure"><p><img src="ica-effective_files/figure-html/unnamed-chunk-6-1.png" class="img-fluid figure-img" alt="Density plots showing 3PM temperatures in degrees Celsius at Hobart, Uluru, and Wollongong, Australia. Hobart has the lowest temperatures, while Uluru has the highest, while Uluru also has the highest range of temperatures and Wollongong has the lowest range." width="672"></p>
+<figcaption>Density plots of 3pm temperatures in 3 Australian locations.</figcaption></figure>
+</div>
+</div>
+</div>
+</section><section id="part-b-1" class="level3"><h3 class="anchored" data-anchor-id="part-b-1">Part b</h3>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1"></a><span class="co"># Colorblind-accessible scheme. "d" indicates discrete colors; a "c" would be continuous. "fill" and "color" depend on their respective ggplot() commands</span></span>
+<span id="cb10-2"><a href="#cb10-2"></a><span class="fu">ggplot</span>(weather, <span class="fu">aes</span>(<span class="at">x =</span> temp3pm, <span class="at">fill =</span> location)) <span class="sc">+</span> </span>
+<span id="cb10-3"><a href="#cb10-3"></a>  <span class="fu">geom_density</span>(<span class="at">alpha =</span> <span class="fl">0.5</span>) <span class="sc">+</span> </span>
+<span id="cb10-4"><a href="#cb10-4"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"3pm temperature (Celsius)"</span>) <span class="sc">+</span> </span>
+<span id="cb10-5"><a href="#cb10-5"></a>  <span class="fu">scale_fill_viridis_d</span>()    </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure"><p><img src="ica-effective_files/figure-html/unnamed-chunk-7-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1"></a><span class="co"># In the color scale line:</span></span>
+<span id="cb11-2"><a href="#cb11-2"></a><span class="co"># Change "fill" to "color" since we use color in the aes()</span></span>
+<span id="cb11-3"><a href="#cb11-3"></a><span class="co"># Change "d" (discrete) to "c" (continuous) since maxtemp is on a continuous scale</span></span>
+<span id="cb11-4"><a href="#cb11-4"></a><span class="fu">ggplot</span>(weather, <span class="fu">aes</span>(<span class="at">y =</span> temp3pm, <span class="at">x =</span> temp9am, <span class="at">color =</span> maxtemp)) <span class="sc">+</span> </span>
+<span id="cb11-5"><a href="#cb11-5"></a>  <span class="fu">geom_point</span>(<span class="at">alpha =</span> <span class="fl">0.5</span>) <span class="sc">+</span> </span>
+<span id="cb11-6"><a href="#cb11-6"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"3pm temperature (Celsius)"</span>) <span class="sc">+</span> </span>
+<span id="cb11-7"><a href="#cb11-7"></a>  <span class="fu">scale_color_viridis_c</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure"><p><img src="ica-effective_files/figure-html/unnamed-chunk-8-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
 </div>
 </div>
 
 
 <!-- -->
 
-</section></main><!-- /main --><script id="quarto-html-after-body" type="application/javascript">
+</section></section></main><!-- /main --><script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
   const toggleBodyColorMode = (bsSheetEl) => {
     const mode = bsSheetEl.getAttribute("data-mode");
@@ -1031,138 +1054,94 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   }
 });
 </script><nav class="page-navigation"><div class="nav-page nav-page-previous">
-      <a href="../bw/bw-solo-project.html" class="pagination-link" aria-label="Solo Project: Internal Migration in Lithuania">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Solo Project: Internal Migration in Lithuania</span></span>
+      <a href="../ica/ica-spatial.html" class="pagination-link" aria-label="Spatial Viz">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Spatial Viz</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="../ica/ica-uni.html" class="pagination-link" aria-label="Univariate Viz">
-        <span class="nav-page-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Univariate Viz</span></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="../ica/ica-wrangling.html" class="pagination-link" aria-label="Wrangling">
+        <span class="nav-page-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Wrangling</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav><div class="modal fade" id="quarto-embedded-source-code-modal" tabindex="-1" aria-labelledby="quarto-embedded-source-code-modal-label" aria-hidden="true"><div class="modal-dialog modal-dialog-scrollable"><div class="modal-content"><div class="modal-header"><h5 class="modal-title" id="quarto-embedded-source-code-modal-label">Source Code</h5><button class="btn-close" data-bs-dismiss="modal"></button></div><div class="modal-body"><div class="">
-<div class="sourceCode" id="cb14" data-shortcodes="false"><pre class="sourceCode numberSource markdown number-lines code-with-copy"><code class="sourceCode markdown"><span id="cb14-1"><a href="#cb14-1"></a><span class="co">---</span></span>
-<span id="cb14-2"><a href="#cb14-2"></a><span class="an">title:</span><span class="co"> "My first Quarto document"</span></span>
-<span id="cb14-3"><a href="#cb14-3"></a><span class="co">---</span></span>
-<span id="cb14-4"><a href="#cb14-4"></a></span>
-<span id="cb14-5"><a href="#cb14-5"></a><span class="fu">## Intro</span></span>
-<span id="cb14-6"><a href="#cb14-6"></a></span>
-<span id="cb14-7"><a href="#cb14-7"></a></span>
-<span id="cb14-8"><a href="#cb14-8"></a>**Macalester College** is in the *Twin Cities*.</span>
-<span id="cb14-9"><a href="#cb14-9"></a>It has:</span>
-<span id="cb14-10"><a href="#cb14-10"></a></span>
-<span id="cb14-11"><a href="#cb14-11"></a><span class="ss">- </span>four seasons</span>
-<span id="cb14-12"><a href="#cb14-12"></a><span class="ss">- </span>bagpipes</span>
-<span id="cb14-13"><a href="#cb14-13"></a><span class="ss">- </span>delightful students</span>
-<span id="cb14-14"><a href="#cb14-14"></a></span>
-<span id="cb14-15"><a href="#cb14-15"></a>Check it out for yourself:</span>
-<span id="cb14-16"><a href="#cb14-16"></a></span>
-<span id="cb14-17"><a href="#cb14-17"></a><span class="al">![](https://www.macalester.edu/about/wp-content/uploads/sites/191/2019/12/campusmap336.png)</span></span>
-<span id="cb14-18"><a href="#cb14-18"></a></span>
-<span id="cb14-19"><a href="#cb14-19"></a></span>
-<span id="cb14-20"><a href="#cb14-20"></a></span>
-<span id="cb14-21"><a href="#cb14-21"></a></span>
-<span id="cb14-22"><a href="#cb14-22"></a></span>
-<span id="cb14-23"><a href="#cb14-23"></a><span class="fu">## Exercise 1: Deduce Quarto features</span></span>
-<span id="cb14-24"><a href="#cb14-24"></a></span>
-<span id="cb14-25"><a href="#cb14-25"></a>Check out the appearance and contents of this document. Thoughts?</span>
-<span id="cb14-26"><a href="#cb14-26"></a></span>
-<span id="cb14-27"><a href="#cb14-27"></a>In the toolbar at the top of this document, **Render** the .qmd file into a .html file. Where is this file stored? Thoughts about its appearance / contents? Can you edit it?</span>
-<span id="cb14-28"><a href="#cb14-28"></a></span>
-<span id="cb14-29"><a href="#cb14-29"></a>Toggling between the .qmd and .html files, explain the purpose of the following features in the .qmd file:        </span>
-<span id="cb14-30"><a href="#cb14-30"></a></span>
-<span id="cb14-31"><a href="#cb14-31"></a><span class="in">`*`</span></span>
-<span id="cb14-32"><a href="#cb14-32"></a>A single asterisk on each side of a phrase italicizes that phrase.</span>
-<span id="cb14-33"><a href="#cb14-33"></a></span>
-<span id="cb14-34"><a href="#cb14-34"></a><span class="in">`**`</span></span>
-<span id="cb14-35"><a href="#cb14-35"></a>Two asterisks on each side of a phrase bold that phrase.</span>
-<span id="cb14-36"><a href="#cb14-36"></a></span>
-<span id="cb14-37"><a href="#cb14-37"></a><span class="in">`#`</span></span>
-<span id="cb14-38"><a href="#cb14-38"></a>A double hashtag inroduces a section heading, and a single hashtag is used for notes.</span>
-<span id="cb14-39"><a href="#cb14-39"></a></span>
-<span id="cb14-40"><a href="#cb14-40"></a><span class="in">`-`</span></span>
-<span id="cb14-41"><a href="#cb14-41"></a>A hyphen creates a bulleted list.</span>
-<span id="cb14-42"><a href="#cb14-42"></a></span>
-<span id="cb14-43"><a href="#cb14-43"></a><span class="in">`\`</span></span>
-<span id="cb14-44"><a href="#cb14-44"></a>No backslashes in document.</span>
-<span id="cb14-45"><a href="#cb14-45"></a></span>
-<span id="cb14-46"><a href="#cb14-46"></a><span class="in">`![](url)`</span></span>
-<span id="cb14-47"><a href="#cb14-47"></a>This phrase allows the image to load.</span>
-<span id="cb14-48"><a href="#cb14-48"></a></span>
-<span id="cb14-49"><a href="#cb14-49"></a></span>
-<span id="cb14-50"><a href="#cb14-50"></a></span>
-<span id="cb14-51"><a href="#cb14-51"></a><span class="fu">## Exercise 2: Code</span></span>
-<span id="cb14-52"><a href="#cb14-52"></a></span>
-<span id="cb14-53"><a href="#cb14-53"></a>How does this appear in the .qmd? The .html? So...?!</span>
-<span id="cb14-54"><a href="#cb14-54"></a></span>
-<span id="cb14-55"><a href="#cb14-55"></a>seq(from = 100, to = 1000, by = 50)</span>
-<span id="cb14-56"><a href="#cb14-56"></a></span>
-<span id="cb14-57"><a href="#cb14-57"></a>This does not function as a string of code on the webpage, but rather is only text.</span>
-<span id="cb14-58"><a href="#cb14-58"></a></span>
-<span id="cb14-59"><a href="#cb14-59"></a><span class="fu">## Exercise 3: Chunks</span></span>
-<span id="cb14-60"><a href="#cb14-60"></a></span>
-<span id="cb14-61"><a href="#cb14-61"></a>Quarto isn't a mind reader -- we must distinguish R code from text.</span>
-<span id="cb14-62"><a href="#cb14-62"></a>We do so by putting code inside an **R chunk**:</span>
-<span id="cb14-63"><a href="#cb14-63"></a></span>
-<span id="cb14-66"><a href="#cb14-66"></a><span class="in">```{r}</span></span>
-<span id="cb14-67"><a href="#cb14-67"></a><span class="fu">seq</span>(<span class="at">from =</span> <span class="dv">100</span>, <span class="at">to =</span> <span class="dv">1000</span>, <span class="at">by =</span> <span class="dv">50</span>)</span>
-<span id="cb14-68"><a href="#cb14-68"></a><span class="in">```</span></span>
-<span id="cb14-69"><a href="#cb14-69"></a></span>
-<span id="cb14-70"><a href="#cb14-70"></a><span class="ss">- </span>Put the <span class="in">`seq()`</span> code in the chunk.</span>
-<span id="cb14-71"><a href="#cb14-71"></a><span class="ss">- </span>Press the green arrow in the top right of the chunk. What happens in the qmd?</span>
-<span id="cb14-72"><a href="#cb14-72"></a><span class="ss">- </span>Render. What appears in the html: R code, output, or both?</span>
-<span id="cb14-73"><a href="#cb14-73"></a></span>
-<span id="cb14-74"><a href="#cb14-74"></a>The code shows up as a separate font and color, and also gives an output from the code.</span>
-<span id="cb14-75"><a href="#cb14-75"></a></span>
-<span id="cb14-76"><a href="#cb14-76"></a></span>
-<span id="cb14-77"><a href="#cb14-77"></a><span class="fu">## Exercise 4: Practice</span></span>
-<span id="cb14-78"><a href="#cb14-78"></a></span>
-<span id="cb14-79"><a href="#cb14-79"></a><span class="ss">- </span>Use R code to create the following sequence: 10 10 10 10</span>
-<span id="cb14-80"><a href="#cb14-80"></a><span class="ss">- </span>Store the sequence as <span class="in">`four_tens`</span>.</span>
-<span id="cb14-81"><a href="#cb14-81"></a><span class="ss">- </span>Use an R function (which we haven't learned!) to add up the numbers in <span class="in">`four_tens`</span>.</span>
-<span id="cb14-82"><a href="#cb14-82"></a></span>
-<span id="cb14-85"><a href="#cb14-85"></a><span class="in">```{r}</span></span>
-<span id="cb14-86"><a href="#cb14-86"></a>four_tens <span class="ot">&lt;-</span> <span class="fu">rep</span>(<span class="dv">10</span>,<span class="dv">4</span>)</span>
-<span id="cb14-87"><a href="#cb14-87"></a><span class="fu">sum</span>(four_tens, <span class="at">na.rm =</span> <span class="cn">FALSE</span>)</span>
-<span id="cb14-88"><a href="#cb14-88"></a><span class="in">```</span></span>
-<span id="cb14-89"><a href="#cb14-89"></a></span>
-<span id="cb14-90"><a href="#cb14-90"></a><span class="fu">## Exercise 5: Fix this code</span></span>
-<span id="cb14-91"><a href="#cb14-91"></a></span>
-<span id="cb14-92"><a href="#cb14-92"></a>Code is a form of communication, and the code below doesn't cut it.</span>
-<span id="cb14-93"><a href="#cb14-93"></a></span>
-<span id="cb14-94"><a href="#cb14-94"></a>Put the code in a chunk and fix it.</span>
-<span id="cb14-95"><a href="#cb14-95"></a></span>
-<span id="cb14-96"><a href="#cb14-96"></a>Rep(x = 1, times = 10)</span>
-<span id="cb14-97"><a href="#cb14-97"></a>seq(from=100,to=1000,length=20)</span>
-<span id="cb14-98"><a href="#cb14-98"></a>theNumberofStudentsinthisclass&lt;-27</span>
-<span id="cb14-99"><a href="#cb14-99"></a></span>
-<span id="cb14-102"><a href="#cb14-102"></a><span class="in">```{r}</span></span>
-<span id="cb14-103"><a href="#cb14-103"></a><span class="fu">rep</span>(<span class="dv">1</span>, <span class="dv">10</span>)</span>
-<span id="cb14-104"><a href="#cb14-104"></a><span class="fu">seq</span>(<span class="dv">100</span>, <span class="dv">1000</span>, <span class="dv">20</span>)</span>
-<span id="cb14-105"><a href="#cb14-105"></a>number_students <span class="ot">&lt;-</span> <span class="dv">27</span></span>
-<span id="cb14-106"><a href="#cb14-106"></a><span class="in">```</span></span>
-<span id="cb14-107"><a href="#cb14-107"></a></span>
-<span id="cb14-108"><a href="#cb14-108"></a></span>
-<span id="cb14-109"><a href="#cb14-109"></a><span class="fu">## Exercise 6: Comments</span></span>
-<span id="cb14-110"><a href="#cb14-110"></a></span>
-<span id="cb14-111"><a href="#cb14-111"></a>Run the chunk below.</span>
-<span id="cb14-112"><a href="#cb14-112"></a>Notice that R ignores anything in a line starting with a pound sign (<span class="in">`#`</span>).</span>
-<span id="cb14-113"><a href="#cb14-113"></a>If we took the <span class="in">`#`</span> away we'd get an error!</span>
-<span id="cb14-114"><a href="#cb14-114"></a></span>
-<span id="cb14-117"><a href="#cb14-117"></a><span class="in">```{r}</span></span>
-<span id="cb14-118"><a href="#cb14-118"></a><span class="co"># This is a comment</span></span>
-<span id="cb14-119"><a href="#cb14-119"></a><span class="dv">4</span> <span class="sc">+</span> <span class="dv">5</span></span>
-<span id="cb14-120"><a href="#cb14-120"></a><span class="in">```</span></span>
-<span id="cb14-121"><a href="#cb14-121"></a></span>
-<span id="cb14-122"><a href="#cb14-122"></a>We'll utilize this feature to **comment our code**, i.e. leave short notes about what our code is doing.</span>
-<span id="cb14-123"><a href="#cb14-123"></a>Below, replace the <span class="in">`???`</span> with an appropriate comment.</span>
-<span id="cb14-124"><a href="#cb14-124"></a></span>
-<span id="cb14-127"><a href="#cb14-127"></a><span class="in">```{r}</span></span>
-<span id="cb14-128"><a href="#cb14-128"></a><span class="co"># converting Celsius to Fahrenheit</span></span>
-<span id="cb14-129"><a href="#cb14-129"></a>temperature_c <span class="ot">&lt;-</span> <span class="dv">10</span></span>
-<span id="cb14-130"><a href="#cb14-130"></a>temperature_f <span class="ot">&lt;-</span> temperature_c <span class="sc">*</span> <span class="dv">9</span><span class="sc">/</span><span class="dv">5</span> <span class="sc">+</span> <span class="dv">32</span></span>
-<span id="cb14-131"><a href="#cb14-131"></a>temperature_f</span>
-<span id="cb14-132"><a href="#cb14-132"></a><span class="in">```</span></span>
+<div class="sourceCode" id="cb12" data-shortcodes="false"><pre class="sourceCode numberSource markdown number-lines code-with-copy"><code class="sourceCode markdown"><span id="cb12-1"><a href="#cb12-1"></a><span class="co">---</span></span>
+<span id="cb12-2"><a href="#cb12-2"></a><span class="an">title:</span><span class="co"> "Effective Viz"</span></span>
+<span id="cb12-3"><a href="#cb12-3"></a><span class="an">number-sections:</span><span class="co"> false</span></span>
+<span id="cb12-4"><a href="#cb12-4"></a><span class="co">---</span></span>
+<span id="cb12-5"><a href="#cb12-5"></a></span>
+<span id="cb12-6"><a href="#cb12-6"></a><span class="fu">## Exercise 1: Professionalism</span></span>
+<span id="cb12-7"><a href="#cb12-7"></a>Weather in Australia:</span>
+<span id="cb12-10"><a href="#cb12-10"></a><span class="in">```{r}</span></span>
+<span id="cb12-11"><a href="#cb12-11"></a><span class="co"># Load tidyverse package for plotting and wrangling</span></span>
+<span id="cb12-12"><a href="#cb12-12"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb12-13"><a href="#cb12-13"></a></span>
+<span id="cb12-14"><a href="#cb12-14"></a><span class="co"># Import the data</span></span>
+<span id="cb12-15"><a href="#cb12-15"></a>weather <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">"https://mac-stat.github.io/data/weather_3_locations.csv"</span>) <span class="sc">|&gt;</span> </span>
+<span id="cb12-16"><a href="#cb12-16"></a>  <span class="fu">mutate</span>(<span class="at">date =</span> <span class="fu">as.Date</span>(date))</span>
+<span id="cb12-17"><a href="#cb12-17"></a><span class="in">```</span></span>
+<span id="cb12-20"><a href="#cb12-20"></a><span class="in">```{r}</span></span>
+<span id="cb12-21"><a href="#cb12-21"></a><span class="fu">ggplot</span>(weather, <span class="fu">aes</span>(<span class="at">y =</span> temp3pm, <span class="at">x =</span> temp9am, <span class="at">color =</span> location)) <span class="sc">+</span> </span>
+<span id="cb12-22"><a href="#cb12-22"></a>  <span class="fu">geom_point</span>()</span>
+<span id="cb12-23"><a href="#cb12-23"></a><span class="in">```</span></span>
+<span id="cb12-24"><a href="#cb12-24"></a><span class="fu">### Part A</span></span>
+<span id="cb12-27"><a href="#cb12-27"></a><span class="in">```{r}</span></span>
+<span id="cb12-28"><a href="#cb12-28"></a><span class="co">#| warning: false</span></span>
+<span id="cb12-29"><a href="#cb12-29"></a><span class="fu">ggplot</span>(weather, <span class="fu">aes</span>(<span class="at">y =</span> temp3pm, <span class="at">x =</span> temp9am, <span class="at">color =</span> location)) <span class="sc">+</span> </span>
+<span id="cb12-30"><a href="#cb12-30"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span> </span>
+<span id="cb12-31"><a href="#cb12-31"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"Temperature @ 9AM (ºC)"</span>, <span class="at">y =</span> <span class="st">"Temperature @ 3PM (ºC)"</span>, <span class="at">title =</span> <span class="st">"Temperatures by Time of Day"</span>, <span class="at">color =</span> <span class="st">"Location"</span>)</span>
+<span id="cb12-32"><a href="#cb12-32"></a><span class="in">```</span></span>
+<span id="cb12-33"><a href="#cb12-33"></a><span class="fu">### Part B</span></span>
+<span id="cb12-34"><a href="#cb12-34"></a></span>
+<span id="cb12-37"><a href="#cb12-37"></a><span class="in">```{r}</span></span>
+<span id="cb12-38"><a href="#cb12-38"></a><span class="co">#| fig-cap: "A point plot comparing temperatures in Hobart, Uluru, and Wollongong, Australia, at 9AM and 3PM."</span></span>
+<span id="cb12-39"><a href="#cb12-39"></a><span class="co">#| warning: false</span></span>
+<span id="cb12-40"><a href="#cb12-40"></a></span>
+<span id="cb12-41"><a href="#cb12-41"></a><span class="fu">ggplot</span>(weather, <span class="fu">aes</span>(<span class="at">y =</span> temp3pm, <span class="at">x =</span> temp9am, <span class="at">color =</span> location)) <span class="sc">+</span> </span>
+<span id="cb12-42"><a href="#cb12-42"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span> </span>
+<span id="cb12-43"><a href="#cb12-43"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"Temperature @ 9AM (ºC)"</span>, <span class="at">y =</span> <span class="st">"Temperature @ 3PM (ºC)"</span>, <span class="at">title =</span> <span class="st">"Temperatures by Time of Day"</span>, <span class="at">color =</span> <span class="st">"Location"</span>)</span>
+<span id="cb12-44"><a href="#cb12-44"></a><span class="in">```</span></span>
+<span id="cb12-45"><a href="#cb12-45"></a></span>
+<span id="cb12-46"><a href="#cb12-46"></a><span class="fu">## Exercise 2: Accessibility</span></span>
+<span id="cb12-47"><a href="#cb12-47"></a></span>
+<span id="cb12-50"><a href="#cb12-50"></a><span class="in">```{r}</span></span>
+<span id="cb12-51"><a href="#cb12-51"></a><span class="co">#| warning: false</span></span>
+<span id="cb12-52"><a href="#cb12-52"></a><span class="co"># Initial graphic</span></span>
+<span id="cb12-53"><a href="#cb12-53"></a><span class="fu">ggplot</span>(weather, <span class="fu">aes</span>(<span class="at">x =</span> temp3pm, <span class="at">fill =</span> location)) <span class="sc">+</span> </span>
+<span id="cb12-54"><a href="#cb12-54"></a>  <span class="fu">geom_density</span>(<span class="at">alpha =</span> <span class="fl">0.5</span>) <span class="sc">+</span> </span>
+<span id="cb12-55"><a href="#cb12-55"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"3pm temperature (Celsius)"</span>) </span>
+<span id="cb12-56"><a href="#cb12-56"></a><span class="in">```</span></span>
+<span id="cb12-57"><a href="#cb12-57"></a></span>
+<span id="cb12-58"><a href="#cb12-58"></a><span class="fu">### Part a</span></span>
+<span id="cb12-61"><a href="#cb12-61"></a><span class="in">```{r}</span></span>
+<span id="cb12-62"><a href="#cb12-62"></a><span class="co">#| warning: false</span></span>
+<span id="cb12-63"><a href="#cb12-63"></a><span class="co">#| fig-cap: "Density plots of 3pm temperatures in 3 Australian locations."</span></span>
+<span id="cb12-64"><a href="#cb12-64"></a><span class="co">#| fig-alt: "Density plots showing 3PM temperatures in degrees Celsius at Hobart, Uluru, and Wollongong, Australia. Hobart has the lowest temperatures, while Uluru has the highest, while Uluru also has the highest range of temperatures and Wollongong has the lowest range."</span></span>
+<span id="cb12-65"><a href="#cb12-65"></a></span>
+<span id="cb12-66"><a href="#cb12-66"></a><span class="fu">ggplot</span>(weather, <span class="fu">aes</span>(<span class="at">x =</span> temp3pm, <span class="at">fill =</span> location)) <span class="sc">+</span> </span>
+<span id="cb12-67"><a href="#cb12-67"></a>  <span class="fu">geom_density</span>(<span class="at">alpha =</span> <span class="fl">0.5</span>) <span class="sc">+</span> </span>
+<span id="cb12-68"><a href="#cb12-68"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"3pm temperature (Celsius)"</span>)  </span>
+<span id="cb12-69"><a href="#cb12-69"></a><span class="in">```</span></span>
+<span id="cb12-70"><a href="#cb12-70"></a></span>
+<span id="cb12-71"><a href="#cb12-71"></a><span class="fu">### Part b</span></span>
+<span id="cb12-74"><a href="#cb12-74"></a><span class="in">```{r}</span></span>
+<span id="cb12-75"><a href="#cb12-75"></a><span class="co">#| warning: false</span></span>
+<span id="cb12-76"><a href="#cb12-76"></a><span class="co"># Colorblind-accessible scheme. "d" indicates discrete colors; a "c" would be continuous. "fill" and "color" depend on their respective ggplot() commands</span></span>
+<span id="cb12-77"><a href="#cb12-77"></a><span class="fu">ggplot</span>(weather, <span class="fu">aes</span>(<span class="at">x =</span> temp3pm, <span class="at">fill =</span> location)) <span class="sc">+</span> </span>
+<span id="cb12-78"><a href="#cb12-78"></a>  <span class="fu">geom_density</span>(<span class="at">alpha =</span> <span class="fl">0.5</span>) <span class="sc">+</span> </span>
+<span id="cb12-79"><a href="#cb12-79"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"3pm temperature (Celsius)"</span>) <span class="sc">+</span> </span>
+<span id="cb12-80"><a href="#cb12-80"></a>  <span class="fu">scale_fill_viridis_d</span>()    </span>
+<span id="cb12-81"><a href="#cb12-81"></a><span class="in">```</span></span>
+<span id="cb12-82"><a href="#cb12-82"></a></span>
+<span id="cb12-85"><a href="#cb12-85"></a><span class="in">```{r}</span></span>
+<span id="cb12-86"><a href="#cb12-86"></a><span class="co">#| warning: false</span></span>
+<span id="cb12-87"><a href="#cb12-87"></a><span class="co"># In the color scale line:</span></span>
+<span id="cb12-88"><a href="#cb12-88"></a><span class="co"># Change "fill" to "color" since we use color in the aes()</span></span>
+<span id="cb12-89"><a href="#cb12-89"></a><span class="co"># Change "d" (discrete) to "c" (continuous) since maxtemp is on a continuous scale</span></span>
+<span id="cb12-90"><a href="#cb12-90"></a><span class="fu">ggplot</span>(weather, <span class="fu">aes</span>(<span class="at">y =</span> temp3pm, <span class="at">x =</span> temp9am, <span class="at">color =</span> maxtemp)) <span class="sc">+</span> </span>
+<span id="cb12-91"><a href="#cb12-91"></a>  <span class="fu">geom_point</span>(<span class="at">alpha =</span> <span class="fl">0.5</span>) <span class="sc">+</span> </span>
+<span id="cb12-92"><a href="#cb12-92"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"3pm temperature (Celsius)"</span>) <span class="sc">+</span> </span>
+<span id="cb12-93"><a href="#cb12-93"></a>  <span class="fu">scale_color_viridis_c</span>()</span>
+<span id="cb12-94"><a href="#cb12-94"></a><span class="in">```</span></span>
 </code><button title="Copy to Clipboard" class="code-copy-button" data-in-quarto-modal=""><i class="bi"></i></button></pre></div>
 </div></div></div></div></div>
 </div> <!-- /content -->
