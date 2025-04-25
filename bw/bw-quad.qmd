@@ -1,5 +1,36 @@
 ---
 title: "Quadvariate Viz"
+execute: 
+  echo: false
+  warning: false
 ---
 
 Use this file to generate a professional looking **quadvariate** visualization.  The visualization will not perfect the first time but you are expected to improve on it throughout the semester especially after covering advanced topics such as effective viz.
+
+```{r}
+#| fig-cap: "This point plot shows average SAT scores from each state in the 1994-5 school year versus teacher salaries and average expenditure per pupil, divided by the percentage of students that take the SAT."
+#| fig-alt: "A point plot showing average SAT scores by state in the 1994-5 school year versus average expenditure per pupil located on the x-axis, with point size indicating teacher salaries. This data is categorized based on the percentage of students taking the SAT by state, with lower percentages correlating with higher scores, and vice versa."
+# Import and check out data
+library(tidyverse)
+library(RColorBrewer)
+education <- read.csv("https://mac-stat.github.io/data/sat.csv")
+
+education |>
+  mutate(fracCat = fct_recode(fracCat,
+                              "0-15%" = "(0,15]",
+                              "15-45%" = "(15,45]",
+                              "45-100%" = "(45,100]")) |>
+ggplot(aes(x = expend, y = sat, size = salary, color = fracCat)) +
+  geom_point() +
+  theme_bw() +
+  scale_x_continuous(
+    name = "Expenditure per pupil",
+    labels = c("$4k", "$6k", "$8k", "$10k")) +
+  scale_size_continuous(
+    breaks = c(25.994, 30, 35, 40, 45),
+    labels = c("$25k", "$30k", "$35k", "$40k", "$45k"),
+    name = "Avg. teacher salary") +
+  scale_color_viridis_d(name = "% students taking SAT", direction = -1) +
+  labs(title = "Simpson's paradox and average SAT scores by state, 1994-95", subtitle = "How test-taker ratios obscure the impact of education funding", y = "Avg. SAT score")
+```
+

@@ -7,3 +7,21 @@ execute:
 
 Use this file to generate a professional looking **bivariate** visualization.  The visualization will not perfect the first time but you are expected to improve it throughout the semester especially after covering advanced topics such as effective viz.
 
+```{r}
+#| fig-cap: "Joy plot showing differences in agency type determining NIBRS join date."
+#| fig-alt: "Joy plot showing aggregated join dates to the NIBRS categorized by agency type. For most agency types, dates spike in 2021, when the FBI switched to NIBRS data collection from SRS, although for state agencies and state police, joins also peaked in the late 1990s and early 2000s."
+library(tidyverse)
+library(ggridges)
+agencies <- readr::read_csv('https://raw.githubusercontent.com/rfordatascience/tidytuesday/main/data/2025/2025-02-18/agencies.csv')
+
+# make joy plot
+agencies |>
+  filter(agency_type != "Unknown") |>
+  filter(!is.na(agency_type)) |>
+  mutate(agency_type = fct_rev(fct_relevel(agency_type, c("City", "County", "State Police", "Tribal", "University or College", "Other State Agency", "Other")))) |>
+ggplot(aes(x = nibrs_start_date, y = agency_type)) +
+  geom_density_ridges(alpha = 0.5, scale = .95) +
+  labs(x = "NIBRS Start Date", y = "Agency Type", title = "NIBRS Start Date by Agency Type") +
+  theme_light()
+```
+

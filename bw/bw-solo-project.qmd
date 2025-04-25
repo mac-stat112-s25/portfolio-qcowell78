@@ -2,9 +2,10 @@
 title: "Solo Project: Internal Migration in Lithuania"
 format: html
 number-sections: false
+execute: 
+  warning: false
+  echo: false
 ---
-
-# Process
 
 ```{r}
 # load packages
@@ -16,8 +17,6 @@ library(RColorBrewer)
 ```{r}
 # load data
 lt_internal_migration <- read_csv("../data/net_migration_apskritys.csv")
-
-head(lt_internal_migration)
 ```
 
 
@@ -60,23 +59,6 @@ avg_internal_clean <- lt_internal_migration |>
 ```
 
 ```{r}
-# adding alt text and caption in next section
-# create map of average net internal migration 2019-2023
-lt_apskritys |>
-  left_join(avg_internal_clean, join_by(name_en == region)) |>
-  ggplot() +
-  geom_sf(aes(fill = migration_cats)) +
-  theme_void() +
-  scale_fill_manual(values = brewer.pal(n = 6, name = "PRGn"), name = "# Migrants (net)") +
-  labs(
-    title = "Average Net Internal Migration in Lithuania, 2019-2023",
-    caption = "Author: Quinn Cowell | Date: 4/20/2024 | Source: Valstybės duomenų agentūra, 2024")
-```
-
-## Final product
-
-```{r}
-#| echo: false
 #| fig-cap: "Choropleth map of average annual net interal migration in Lithuania between 2019 to 2023, shown by net gains or losses of residents by county."
 #| fig-alt: "Choropleth map of annual net interal migration in Lithuania from 2019 to 2023. Klaipėda, Vilnius, and Kaunas are the only counties with net gains; everywhere else is losing population."
 # map
@@ -85,7 +67,7 @@ lt_apskritys |>
   ggplot() +
   geom_sf(aes(fill = migration_cats)) +
   theme_void() +
-  scale_fill_manual(values = brewer.pal(n = 6, name = "PRGn"), name = "# Migrants (net)") +
+  scale_fill_manual(values = brewer.pal(n = 6, name = "PRGn"), name = "# Migrants") +
   labs(
     title = "Average Net Internal Migration in Lithuania, 2019-2023",
     caption = "Author: Quinn Cowell | Date: 4/20/2024 | Source: Valstybės duomenų agentūra, 2024")
