@@ -965,9 +965,13 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb1-19"><a href="#cb1-19"></a><span class="co"># Create bar graph</span></span>
 <span id="cb1-20"><a href="#cb1-20"></a><span class="fu">ggplot</span>(survey, <span class="fu">aes</span>(<span class="at">x =</span> hangout)) <span class="sc">+</span></span>
 <span id="cb1-21"><a href="#cb1-21"></a>  <span class="fu">geom_bar</span>(<span class="at">fill =</span> <span class="st">"grey"</span>) <span class="sc">+</span></span>
-<span id="cb1-22"><a href="#cb1-22"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"Ideal Hangout Spot"</span>, <span class="at">y =</span> <span class="st">"# of Students"</span>, <span class="at">title =</span> <span class="st">"Ideal Hangout Spots of STAT 112 Students"</span>) <span class="sc">+</span></span>
-<span id="cb1-23"><a href="#cb1-23"></a>  <span class="fu">theme_light</span>()</span>
-<span id="cb1-24"><a href="#cb1-24"></a><span class="in">```</span></span>
+<span id="cb1-22"><a href="#cb1-22"></a>  <span class="fu">labs</span>(</span>
+<span id="cb1-23"><a href="#cb1-23"></a>    <span class="at">x =</span> <span class="st">"Ideal Hangout Spot"</span>, </span>
+<span id="cb1-24"><a href="#cb1-24"></a>    <span class="at">y =</span> <span class="st">"# of Students"</span>, </span>
+<span id="cb1-25"><a href="#cb1-25"></a>    <span class="at">title =</span> <span class="st">"Ideal Hangout Spots of STAT 112 Students"</span>,</span>
+<span id="cb1-26"><a href="#cb1-26"></a>    <span class="at">caption =</span> <span class="st">"Author: Quinn Cowell | Date: 4/26/2025 | Source: Amin Alhashim, 2025"</span>) <span class="sc">+</span></span>
+<span id="cb1-27"><a href="#cb1-27"></a>  <span class="fu">theme_light</span>()</span>
+<span id="cb1-28"><a href="#cb1-28"></a><span class="in">```</span></span>
 </code><button title="Copy to Clipboard" class="code-copy-button" data-in-quarto-modal=""><i class="bi"></i></button></pre></div>
 </div></div></div></div></div>
 </div> <!-- /content -->

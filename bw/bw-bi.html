@@ -968,10 +968,13 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb1-22"><a href="#cb1-22"></a>  <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(agency_type)) <span class="sc">|&gt;</span></span>
 <span id="cb1-23"><a href="#cb1-23"></a>  <span class="fu">mutate</span>(<span class="at">agency_type =</span> <span class="fu">fct_rev</span>(<span class="fu">fct_relevel</span>(agency_type, <span class="fu">c</span>(<span class="st">"City"</span>, <span class="st">"County"</span>, <span class="st">"State Police"</span>, <span class="st">"Tribal"</span>, <span class="st">"University or College"</span>, <span class="st">"Other State Agency"</span>, <span class="st">"Other"</span>)))) <span class="sc">|&gt;</span></span>
 <span id="cb1-24"><a href="#cb1-24"></a><span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> nibrs_start_date, <span class="at">y =</span> agency_type)) <span class="sc">+</span></span>
-<span id="cb1-25"><a href="#cb1-25"></a>  <span class="fu">geom_density_ridges</span>(<span class="at">alpha =</span> <span class="fl">0.5</span>, <span class="at">scale =</span> .<span class="dv">95</span>) <span class="sc">+</span></span>
-<span id="cb1-26"><a href="#cb1-26"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"NIBRS Start Date"</span>, <span class="at">y =</span> <span class="st">"Agency Type"</span>, <span class="at">title =</span> <span class="st">"NIBRS Start Date by Agency Type"</span>) <span class="sc">+</span></span>
-<span id="cb1-27"><a href="#cb1-27"></a>  <span class="fu">theme_light</span>()</span>
-<span id="cb1-28"><a href="#cb1-28"></a><span class="in">```</span></span>
+<span id="cb1-25"><a href="#cb1-25"></a>  <span class="fu">geom_density_ridges</span>(<span class="at">alpha =</span> .<span class="dv">75</span>, <span class="at">scale =</span> .<span class="dv">95</span>) <span class="sc">+</span></span>
+<span id="cb1-26"><a href="#cb1-26"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"NIBRS Start Date"</span>,</span>
+<span id="cb1-27"><a href="#cb1-27"></a>       <span class="at">y =</span> <span class="st">"Agency Type"</span>,</span>
+<span id="cb1-28"><a href="#cb1-28"></a>       <span class="at">title =</span> <span class="st">"NIBRS Start Date by Agency Type"</span>,</span>
+<span id="cb1-29"><a href="#cb1-29"></a>       <span class="at">caption =</span> <span class="st">"Author: Quinn Cowell | Date: 4/25/2025 | Source: FBI Crime Data API, 2025"</span>) <span class="sc">+</span></span>
+<span id="cb1-30"><a href="#cb1-30"></a>  <span class="fu">theme_light</span>()</span>
+<span id="cb1-31"><a href="#cb1-31"></a><span class="in">```</span></span>
 </code><button title="Copy to Clipboard" class="code-copy-button" data-in-quarto-modal=""><i class="bi"></i></button></pre></div>
 </div></div></div></div></div>
 </div> <!-- /content -->
