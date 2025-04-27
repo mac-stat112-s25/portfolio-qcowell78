@@ -17,7 +17,11 @@ survey <- read.csv("https://hash-mac.github.io/stat112site-s25/data/survey.csv")
 # Create bar graph
 ggplot(survey, aes(x = hangout)) +
   geom_bar(fill = "grey") +
-  labs(x = "Ideal Hangout Spot", y = "# of Students", title = "Ideal Hangout Spots of STAT 112 Students") +
+  labs(
+    x = "Ideal Hangout Spot", 
+    y = "# of Students", 
+    title = "Ideal Hangout Spots of STAT 112 Students",
+    caption = "Author: Quinn Cowell | Date: 4/26/2025 | Source: Amin Alhashim, 2025") +
   theme_light()
 ```
 

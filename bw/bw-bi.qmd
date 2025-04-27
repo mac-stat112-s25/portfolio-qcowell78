@@ -20,8 +20,11 @@ agencies |>
   filter(!is.na(agency_type)) |>
   mutate(agency_type = fct_rev(fct_relevel(agency_type, c("City", "County", "State Police", "Tribal", "University or College", "Other State Agency", "Other")))) |>
 ggplot(aes(x = nibrs_start_date, y = agency_type)) +
-  geom_density_ridges(alpha = 0.5, scale = .95) +
-  labs(x = "NIBRS Start Date", y = "Agency Type", title = "NIBRS Start Date by Agency Type") +
+  geom_density_ridges(alpha = .75, scale = .95) +
+  labs(x = "NIBRS Start Date",
+       y = "Agency Type",
+       title = "NIBRS Start Date by Agency Type",
+       caption = "Author: Quinn Cowell | Date: 4/25/2025 | Source: FBI Crime Data API, 2025") +
   theme_light()
 ```
 

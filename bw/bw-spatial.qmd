@@ -8,37 +8,28 @@ execute:
 Use this file to generate a professional looking **spatial** visualization.  The visualization will not perfect the first time but you are expected to improve on it throughout the semester especially after covering advanced topics such as effective viz.
 
 ```{r}
-#| fig-cap: "A choropleth map of the US showing percentage of Republican vote share by county in the 2020 presidential election."
-#| fig-alt: "A choropleth map of the US showing percentage of Republican vote share by county in the 2020 presidential election. Republicans tend to have higher vote shares in less dense areas, and lower vote shares in more dense areas."
+#| fig-cap: "A map of the US showing the locations of law enforcement agencies and whether they participate in NIBRS"
+#| fig-alt: "A point map of the US showing the locations of law enforcement agencies and whether they participate in NIBRS. Some states, like New York, Pennsylvania, and Florida, have particularly high concetrations of non-participating agencies."
+# load packages
 library(tidyverse)
-library(RColorBrewer)
-library(socviz)
-data(county_map) 
-
-elections_by_counties <- read.csv("https://mac-stat.github.io/data/election_2020_county.csv")
-
-elections_by_counties <- elections_by_counties |> 
-  select(state_name, state_abbr, county_name, county_fips,
-          repub_pct_20, median_age, median_rent) |> 
-  mutate(repub_20_categories = 
-           cut(repub_pct_20, 
-               breaks = seq(0, 100, by = 10),
-               labels = c("0-9", "10-19", "20-29", "30-39", "40-49",
-                          "50-59", "60-69", "70-79", "80-89", "90-100"),
-               include.lowest = TRUE))
-
-elections_by_counties <- elections_by_counties |> 
-  mutate(county_fips = as.character(county_fips)) |> 
-  mutate(county_fips = 
-           ifelse(nchar(county_fips) == 4, paste0("0", county_fips), county_fips))
-
-ggplot(elections_by_counties, aes(map_id = county_fips, fill = repub_20_categories)) +
-  geom_map(map = county_map) +
-  scale_fill_manual(values = rev(brewer.pal(10, "RdBu")), name = "% Republican") +
-  expand_limits(x = county_map$long, y = county_map$lat) +
-  theme_void() +
-  theme(legend.position = "right") + 
-  coord_equal() +
-  labs(title = "Republican Vote % by County in the 2020 Presidential Election")
+#load data
+agencies <- readr::read_csv('https://raw.githubusercontent.com/rfordatascience/tidytuesday/main/data/2025/2025-02-18/agencies.csv')
+# Create bg map
+us_boundaries <- ne_states(
+  country = c("united states of america"),
+  returnclass = "sf")
+# Plot map
+ggplot(us_boundaries) +
+  geom_sf(fill = "white", color = "black") +
+  geom_point(
+    data = agencies,
+    aes(x = longitude, y = latitude, color = is_nibrs),
+    size = 0.3,
+    alpha = 0.5) +
+  coord_sf(xlim = c(-123.14, -69), ylim = c(23, 50.11)) +
+  labs(color = "Participates in NIBRS",
+       title = "Map of Participating Agencies in the Contiguous US",
+       caption = "Author: Quinn Cowell | Date: 4/25/2025 | Source: FBI Crime Data API, 2025") +
+  theme_void()
 ```
 

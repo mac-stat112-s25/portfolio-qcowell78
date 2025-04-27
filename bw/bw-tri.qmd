@@ -47,7 +47,8 @@ enrollments_2 |>
       title = "Total Number of Students by Professor", 
       x = "Professor", 
       y = "# of Students", 
-      fill = "Department") +
+      fill = "Department",
+      caption = "Author: Quinn Cowell | Date: 4/26/2025 | Source: Macalester College, 2024") +
     theme_light() +
     scale_fill_viridis_d()
 ```

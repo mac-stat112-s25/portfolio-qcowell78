@@ -31,6 +31,10 @@ ggplot(aes(x = expend, y = sat, size = salary, color = fracCat)) +
     labels = c("$25k", "$30k", "$35k", "$40k", "$45k"),
     name = "Avg. teacher salary") +
   scale_color_viridis_d(name = "% students taking SAT", direction = -1) +
-  labs(title = "Simpson's paradox and average SAT scores by state, 1994-95", subtitle = "How test-taker ratios obscure the impact of education funding", y = "Avg. SAT score")
+  labs(
+    title = "Simpson's paradox and average SAT scores by state, 1994-95",
+    subtitle = "How test-taker ratios obscure the impact of education funding",
+    caption = "Author: Quinn Cowell | Date: 4/26/2025 | Source: Deborah Guber, 1999",
+    y = "Avg. SAT score")
 ```
 
