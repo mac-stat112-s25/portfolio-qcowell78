@@ -12,6 +12,7 @@ Use this file to generate a professional looking **spatial** visualization.  The
 #| fig-alt: "A point map of the US showing the locations of law enforcement agencies and whether they participate in NIBRS. Some states, like New York, Pennsylvania, and Florida, have particularly high concetrations of non-participating agencies."
 # load packages
 library(tidyverse)
+library(rnaturalearth)
 #load data
 agencies <- readr::read_csv('https://raw.githubusercontent.com/rfordatascience/tidytuesday/main/data/2025/2025-02-18/agencies.csv')
 # Create bg map
